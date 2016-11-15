@@ -674,12 +674,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dwijitsolutions/laraadmin.git",
-                "reference": "65c8081fbe6e2be24c69b60a17d2868bff1758e9"
+                "reference": "e62f486832fbd72c4b4be959ef293a9eaf5ef958"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dwijitsolutions/laraadmin/zipball/65c8081fbe6e2be24c69b60a17d2868bff1758e9",
-                "reference": "65c8081fbe6e2be24c69b60a17d2868bff1758e9",
+                "url": "https://api.github.com/repos/dwijitsolutions/laraadmin/zipball/e62f486832fbd72c4b4be959ef293a9eaf5ef958",
+                "reference": "e62f486832fbd72c4b4be959ef293a9eaf5ef958",
                 "shasum": ""
             },
             "require": {
@@ -719,7 +719,7 @@
                 "laravel",
                 "php"
             ],
-            "time": "2016-11-14 11:56:11"
+            "time": "2016-11-15 13:32:07"
         },
         {
             "name": "jakub-onderka/php-console-color",
