@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Role;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -25,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -35,5 +37,23 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    public function showLoginForm()
+    {
+		$roleCount = Role::count();
+		if($roleCount != 0) {
+			$userCount = User::count();
+			if($userCount == 0) {
+				return redirect('register');
+			} else {
+				return view('auth.login');
+			}
+		} else {
+			return view('errors.error', [
+				'title' => 'Migration not completed',
+				'message' => 'Please run command <code>php artisan db:seed</code> to generate required table data.',
+			]);
+		}
     }
 }

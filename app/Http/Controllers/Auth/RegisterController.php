@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
+use App\Role;
+use Eloquent;
+use App\Models\Employee;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -27,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -37,6 +40,24 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function showRegistrationForm()
+    {
+        $roleCount = Role::count();
+		if($roleCount != 0) {
+			$userCount = User::count();
+			if($userCount == 0) {
+				return view('auth.register');
+			} else {
+				return redirect('login');
+			}
+		} else {
+			return view('errors.error', [
+				'title' => 'Migration not completed',
+				'message' => 'Please run command <code>php artisan db:seed</code> to generate required table data.',
+			]);
+		}
     }
 
     /**
@@ -62,10 +83,36 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        // TODO: This is Not Standard. Need to find alternative
+        Eloquent::unguard();
+        
+        $employee = Employee::create([
+            'name' => $data['name'],
+            'designation' => "Super Admin",
+            'mobile' => "8888888888",
+            'mobile2' => "",
+            'email' => $data['email'],
+            'gender' => 'Male',
+            'dept' => "1",
+            'city' => "Pune",
+            'address' => "Karve nagar, Pune 411030",
+            'about' => "About user / biography",
+            'date_birth' => date("Y-m-d"),
+            'date_hire' => date("Y-m-d"),
+            'date_left' => date("Y-m-d"),
+            'salary_cur' => 0,
+        ]);
+        
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'context_id' => $employee->id,
+            'type' => "Employee",
         ]);
+        $role = Role::where('name', 'SUPER_ADMIN')->first();
+        $user->attachRole($role);
+    
+        return $user;
     }
 }
