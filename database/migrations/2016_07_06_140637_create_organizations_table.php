@@ -4,7 +4,6 @@
  * Help: http://laraadmin.com
  */
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Dwij\Laraadmin\Models\Module;
@@ -21,11 +20,15 @@ class CreateOrganizationsTable extends Migration
         Module::generate("Organizations", 'organizations', 'name', 'fa-university', [
             ["name", "Name", "Name", true, "", 5, 250, true],
             ["email", "Email", "Email", true, "", 0, 250, false],
+            ["email2", "Email 2", "Email", true, "", 5, 100, false],
             ["phone", "Phone", "Mobile", false, "", 0, 20, false],
+            ["phone2", "Phone 2", "Mobile", false, "", 0, 25, false],
             ["website", "Website", "URL", false, "http://", 0, 250, false],
+            ["parent", "Parent", "Dropdown", false, "0", 0, 0, false, "@organizations"],
+            ["employee_count", "Employee Count", "Integer", false, "0", 0, 11, false],
             ["assigned_to", "Assigned to", "Dropdown", false, "0", 0, 0, false, "@employees"],
             ["connect_since", "Connected Since", "Date", false, "NULL", 0, 0, false],
-            ["address", "Address", "Address", false, "", 0, 1000, true],
+            ["address", "Address", "Address", false, "", 0, 1000, false],
             ["city", "City", "String", false, "", 0, 250, true],
             ["description", "Description", "Textarea", false, "", 0, 1000, false],
             ["profile_image", "Profile Image", "Image", false, "", 0, 250, false],
@@ -42,7 +45,7 @@ class CreateOrganizationsTable extends Migration
             ["restricted",  "Restricted",   "Checkbox", false, false,       0,  0,      false],
             ["price",       "Price",        "Currency", false, 0.0,         0,  0,      true],
             ["date_release", "Date of Release", "Date", false, "NULL", 0, 0,   false],
-            ["time_started", "Start Time",  "Datetime", false, "NOW()", 0, 0, false],
+            ["time_started", "Start Time",  "Datetime", false, "now()", 0, 0, false],
             ["weight",      "Weight",       "Decimal",  false, 0.0,         0,  20,     true],
             ["publisher",   "Publisher",    "Dropdown", false, "Marvel",    0,  0,      false, ["Bloomsbury","Marvel","Universal"]],
             ["publisher",   "Publisher",    "Dropdown", false, 3,           0,  0,      false, "@publishers"],
