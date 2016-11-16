@@ -20,7 +20,7 @@ class CreateContactsTable extends Migration
         Module::generate("Contacts", 'contacts', 'first_name', 'fa-user', [
             ["designation", "Designation", "Dropdown", false, "", 0, 0, false, ["None","Mr.","Ms.","Mrs.","Dr.","Prof."]],
             ["first_name", "First Name", "Name", false, "", 0, 256, false],
-            ["last_name", "Last Name", "Name", false, "", 0, 256, false],
+            ["last_name", "Last Name", "Name", false, "", 0, 256, true],
             ["title", "Title", "String", false, "", 0, 256, false],
             ["organization", "Organization", "Dropdown", false, "", 0, 0, false, "@organizations"],
             ["office_phone", "Office Phone", "Mobile", false, "", 0, 20, false],
@@ -33,7 +33,7 @@ class CreateContactsTable extends Migration
             ["dob", "Date of Birth", "Date", false, "", 0, 0, false],
             ["assistant", "Assistant", "String", false, "", 0, 256, false],
             ["assistant_phone", "Assistant Phone", "Mobile", false, "", 0, 20, false],
-            ["assigned_to", "Assigned To", "Dropdown", false, "", 0, 0, false, "@employees"],
+            ["assigned_to", "Assigned To", "Dropdown", false, "", 0, 0, true, "@employees"],
             ["address", "Address", "Address", false, "", 0, 256, false],
             ["city", "City", "String", false, "", 0, 256, false],
             ["description", "Description", "Textarea", false, "", 0, 0, false],
