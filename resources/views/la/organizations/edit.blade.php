@@ -44,6 +44,9 @@
 					@la_input($module, 'description')
 					@la_input($module, 'profile_image')
 					@la_input($module, 'profile')
+					@la_input($module, 'type')
+					@la_input($module, 'country')
+					@la_input($module, 'postal_code')
 					--}}
                     <br>
 					<div class="form-group">
