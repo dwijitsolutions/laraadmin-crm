@@ -17,37 +17,37 @@ use Collective\Html\FormFacade as Form;
 use Dwij\Laraadmin\Models\Module;
 use Dwij\Laraadmin\Models\ModuleFields;
 
-use App\Models\Contact;
+use App\Models\Lead;
 
-class ContactsController extends Controller
+class LeadsController extends Controller
 {
 	public $show_action = true;
 	public $view_col = 'first_name';
-	public $listing_cols = ['id', 'first_name', 'last_name', 'title', 'organization', 'email', 'office_phone', 'assigned_to'];
+	public $listing_cols = ['id', 'first_name', 'last_name', 'company', 'phone', 'email', 'assigned_to'];
 	
 	public function __construct() {
 		// Field Access of Listing Columns
 		if(\Dwij\Laraadmin\Helpers\LAHelper::laravel_ver() == 5.3) {
 			$this->middleware(function ($request, $next) {
-				$this->listing_cols = ModuleFields::listingColumnAccessScan('Contacts', $this->listing_cols);
+				$this->listing_cols = ModuleFields::listingColumnAccessScan('Leads', $this->listing_cols);
 				return $next($request);
 			});
 		} else {
-			$this->listing_cols = ModuleFields::listingColumnAccessScan('Contacts', $this->listing_cols);
+			$this->listing_cols = ModuleFields::listingColumnAccessScan('Leads', $this->listing_cols);
 		}
 	}
 	
 	/**
-	 * Display a listing of the Contacts.
+	 * Display a listing of the Leads.
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index()
 	{
-		$module = Module::get('Contacts');
+		$module = Module::get('Leads');
 		
 		if(Module::hasAccess($module->id)) {
-			return View('la.contacts.index', [
+			return View('la.leads.index', [
 				'show_actions' => $this->show_action,
 				'listing_cols' => $this->listing_cols,
 				'module' => $module
@@ -58,7 +58,7 @@ class ContactsController extends Controller
 	}
 
 	/**
-	 * Show the form for creating a new contact.
+	 * Show the form for creating a new lead.
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
@@ -68,16 +68,16 @@ class ContactsController extends Controller
 	}
 
 	/**
-	 * Store a newly created contact in database.
+	 * Store a newly created lead in database.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request)
 	{
-		if(Module::hasAccess("Contacts", "create")) {
+		if(Module::hasAccess("Leads", "create")) {
 		
-			$rules = Module::validateRules("Contacts", $request);
+			$rules = Module::validateRules("Leads", $request);
 			
 			$validator = Validator::make($request->all(), $rules);
 			
@@ -85,9 +85,9 @@ class ContactsController extends Controller
 				return redirect()->back()->withErrors($validator)->withInput();
 			}
 			
-			$insert_id = Module::insert("Contacts", $request);
+			$insert_id = Module::insert("Leads", $request);
 			
-			return redirect()->route(config('laraadmin.adminRoute') . '.contacts.index');
+			return redirect()->route(config('laraadmin.adminRoute') . '.leads.index');
 			
 		} else {
 			return redirect(config('laraadmin.adminRoute')."/");
@@ -95,30 +95,30 @@ class ContactsController extends Controller
 	}
 
 	/**
-	 * Display the specified contact.
+	 * Display the specified lead.
 	 *
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show($id)
 	{
-		if(Module::hasAccess("Contacts", "view")) {
+		if(Module::hasAccess("Leads", "view")) {
 			
-			$contact = Contact::find($id);
-			if(isset($contact->id)) {
-				$module = Module::get('Contacts');
-				$module->row = $contact;
+			$lead = Lead::find($id);
+			if(isset($lead->id)) {
+				$module = Module::get('Leads');
+				$module->row = $lead;
 				
-				return view('la.contacts.show', [
+				return view('la.leads.show', [
 					'module' => $module,
 					'view_col' => $this->view_col,
 					'no_header' => true,
 					'no_padding' => "no-padding"
-				])->with('contact', $contact);
+				])->with('lead', $lead);
 			} else {
 				return view('errors.404', [
 					'record_id' => $id,
-					'record_name' => ucfirst("contact"),
+					'record_name' => ucfirst("lead"),
 				]);
 			}
 		} else {
@@ -127,28 +127,28 @@ class ContactsController extends Controller
 	}
 
 	/**
-	 * Show the form for editing the specified contact.
+	 * Show the form for editing the specified lead.
 	 *
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit($id)
 	{
-		if(Module::hasAccess("Contacts", "edit")) {			
-			$contact = Contact::find($id);
-			if(isset($contact->id)) {	
-				$module = Module::get('Contacts');
+		if(Module::hasAccess("Leads", "edit")) {			
+			$lead = Lead::find($id);
+			if(isset($lead->id)) {	
+				$module = Module::get('Leads');
 				
-				$module->row = $contact;
+				$module->row = $lead;
 				
-				return view('la.contacts.edit', [
+				return view('la.leads.edit', [
 					'module' => $module,
 					'view_col' => $this->view_col,
-				])->with('contact', $contact);
+				])->with('lead', $lead);
 			} else {
 				return view('errors.404', [
 					'record_id' => $id,
-					'record_name' => ucfirst("contact"),
+					'record_name' => ucfirst("lead"),
 				]);
 			}
 		} else {
@@ -157,7 +157,7 @@ class ContactsController extends Controller
 	}
 
 	/**
-	 * Update the specified contact in storage.
+	 * Update the specified lead in storage.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
 	 * @param  int  $id
@@ -165,9 +165,9 @@ class ContactsController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		if(Module::hasAccess("Contacts", "edit")) {
+		if(Module::hasAccess("Leads", "edit")) {
 			
-			$rules = Module::validateRules("Contacts", $request, true);
+			$rules = Module::validateRules("Leads", $request, true);
 			
 			$validator = Validator::make($request->all(), $rules);
 			
@@ -175,9 +175,9 @@ class ContactsController extends Controller
 				return redirect()->back()->withErrors($validator)->withInput();;
 			}
 			
-			$insert_id = Module::updateRow("Contacts", $request, $id);
+			$insert_id = Module::updateRow("Leads", $request, $id);
 			
-			return redirect()->route(config('laraadmin.adminRoute') . '.contacts.index');
+			return redirect()->route(config('laraadmin.adminRoute') . '.leads.index');
 			
 		} else {
 			return redirect(config('laraadmin.adminRoute')."/");
@@ -185,18 +185,18 @@ class ContactsController extends Controller
 	}
 
 	/**
-	 * Remove the specified contact from storage.
+	 * Remove the specified lead from storage.
 	 *
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy($id)
 	{
-		if(Module::hasAccess("Contacts", "delete")) {
-			Contact::find($id)->delete();
+		if(Module::hasAccess("Leads", "delete")) {
+			Lead::find($id)->delete();
 			
 			// Redirecting to index() method
-			return redirect()->route(config('laraadmin.adminRoute') . '.contacts.index');
+			return redirect()->route(config('laraadmin.adminRoute') . '.leads.index');
 		} else {
 			return redirect(config('laraadmin.adminRoute')."/");
 		}
@@ -209,11 +209,11 @@ class ContactsController extends Controller
 	 */
 	public function dtajax()
 	{
-		$values = DB::table('contacts')->select($this->listing_cols)->whereNull('deleted_at');
+		$values = DB::table('leads')->select($this->listing_cols)->whereNull('deleted_at');
 		$out = Datatables::of($values)->make();
 		$data = $out->getData();
 
-		$fields_popup = ModuleFields::getModuleFields('Contacts');
+		$fields_popup = ModuleFields::getModuleFields('Leads');
 		
 		for($i=0; $i < count($data->data); $i++) {
 			for ($j=0; $j < count($this->listing_cols); $j++) { 
@@ -222,7 +222,7 @@ class ContactsController extends Controller
 					$data->data[$i][$j] = ModuleFields::getFieldValue($fields_popup[$col], $data->data[$i][$j]);
 				}
 				if($col == $this->view_col) {
-					$data->data[$i][$j] = '<a href="'.url(config('laraadmin.adminRoute') . '/contacts/'.$data->data[$i][0]).'">'.$data->data[$i][$j].'</a>';
+					$data->data[$i][$j] = '<a href="'.url(config('laraadmin.adminRoute') . '/leads/'.$data->data[$i][0]).'">'.$data->data[$i][$j].'</a>';
 				}
 				// else if($col == "author") {
 				//    $data->data[$i][$j];
@@ -231,12 +231,12 @@ class ContactsController extends Controller
 			
 			if($this->show_action) {
 				$output = '';
-				if(Module::hasAccess("Contacts", "edit")) {
-					$output .= '<a href="'.url(config('laraadmin.adminRoute') . '/contacts/'.$data->data[$i][0].'/edit').'" class="btn btn-warning btn-xs" style="display:inline;padding:2px 5px 3px 5px;"><i class="fa fa-edit"></i></a>';
+				if(Module::hasAccess("Leads", "edit")) {
+					$output .= '<a href="'.url(config('laraadmin.adminRoute') . '/leads/'.$data->data[$i][0].'/edit').'" class="btn btn-warning btn-xs" style="display:inline;padding:2px 5px 3px 5px;"><i class="fa fa-edit"></i></a>';
 				}
 				
-				if(Module::hasAccess("Contacts", "delete")) {
-					$output .= Form::open(['route' => [config('laraadmin.adminRoute') . '.contacts.destroy', $data->data[$i][0]], 'method' => 'delete', 'style'=>'display:inline']);
+				if(Module::hasAccess("Leads", "delete")) {
+					$output .= Form::open(['route' => [config('laraadmin.adminRoute') . '.leads.destroy', $data->data[$i][0]], 'method' => 'delete', 'style'=>'display:inline']);
 					$output .= ' <button class="btn btn-danger btn-xs" type="submit"><i class="fa fa-times"></i></button>';
 					$output .= Form::close();
 				}

@@ -8,7 +8,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Dwij\Laraadmin\Models\Module;
 
-class CreateContactsTable extends Migration
+class CreateLeadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,27 +17,23 @@ class CreateContactsTable extends Migration
      */
     public function up()
     {
-        Module::generate("Contacts", 'contacts', 'first_name', 'fa-user', [
-            ["designation", "Designation", "Dropdown", false, "", 0, 0, false, ["None","Mr.","Ms.","Mrs.","Dr.","Prof."]],
-            ["first_name", "First Name", "Name", false, "", 0, 256, false],
-            ["last_name", "Last Name", "Name", false, "", 0, 256, true],
-            ["title", "Title", "String", false, "", 0, 256, false],
-            ["organization", "Organization Name  ", "Dropdown", false, "", 0, 0, false, "@organizations"],
-            ["office_phone", "Office Phone", "Mobile", false, "", 0, 20, false],
-            ["mobile_phone", "Mobile Phone", "Mobile", false, "", 0, 20, false],
-            ["home_phone", "Home Phone", "Mobile", false, "", 0, 20, false],
-            ["lead_source", "Lead Source", "Dropdown", false, "", 0, 0, false, "@industry_types"],
-            ["department", "Department", "String", false, "", 0, 256, false],
+        Module::generate("Leads", 'leads', 'first_name', 'fa-share', [
+            ["first_name", "First Name", "Name", false, "", 1, 100, false],
+            ["last_name", "Last Name", "Name", false, "", 1, 100, true],
+            ["phone", "Primary Phone	", "Mobile", false, "", 0, 20, false],
+            ["phone2", "Mobile Phone", "Mobile", false, "", 0, 20, false],
             ["email", "Primary Email", "Email", false, "", 0, 256, false],
-            ["email2", "Secondary Email", "Email", false, "", 0, 256, false],
-            ["dob", "Date of Birth", "Date", false, "", 0, 0, false],
-            ["assistant", "Assistant", "String", false, "", 0, 256, false],
-            ["assistant_phone", "Assistant Phone", "Mobile", false, "", 0, 20, false],
-            ["assigned_to", "Assigned To", "Dropdown", false, "", 0, 0, true, "@employees"],
+            ["email1", "Secondary Email", "Email", false, "", 0, 256, false],
+            ["company", "Company", "String", false, "", 0, 256, false],
+            ["title", "Title", "String", false, "", 0, 256, false],
+            ["lead_source", "Lead Source", "Dropdown", false, "", 0, 0, false, ["Cold Call","Existing Customer","Self Generated","Employee","Partner","Public Relation","Direct Mail","Conference","Trade Show","Web Site","Word of mouth","Other"]],
+            ["industry", "Industry", "Dropdown", false, "", 0, 0, false, "@industry_types"],
+            ["assigned_to", "Assigned To", "Dropdown", false, "", 0, 0, false, "@employees"],
+            ["employee_count", "Number of Employees", "Integer", false, "1", 100, 11, false],
             ["address", "Address", "Address", false, "", 0, 256, false],
             ["city", "City", "String", false, "", 0, 256, false],
+            ["country", "Country", "String", false, "", 0, 256, false],
             ["description", "Description", "Textarea", false, "", 0, 0, false],
-            ["profile_picture", "Contact Image", "Files", false, "", 0, 0, false],
         ]);
 		
 		/*
@@ -83,8 +79,8 @@ class CreateContactsTable extends Migration
      */
     public function down()
     {
-        if (Schema::hasTable('contacts')) {
-            Schema::drop('contacts');
+        if (Schema::hasTable('leads')) {
+            Schema::drop('leads');
         }
     }
 }

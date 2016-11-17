@@ -43,7 +43,7 @@
 					@la_input($module, 'home_phone')
 					@la_input($module, 'lead_source')
 					@la_input($module, 'department')
-					@la_input($module, 'email1')
+					@la_input($module, 'email')
 					@la_input($module, 'email2')
 					@la_input($module, 'dob')
 					@la_input($module, 'assistant')
