@@ -22,4 +22,12 @@ class Lead extends Model
 	protected $guarded = [];
 
 	protected $dates = ['deleted_at'];
+
+	/**
+     * Get the Employee assigned to this Lead
+     */
+    public function assigned_to_emp()
+    {
+        return $this->belongsTo('App\Models\Employee', 'assigned_to', 'id');
+    }
 }

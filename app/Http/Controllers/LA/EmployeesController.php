@@ -29,10 +29,10 @@ class EmployeesController extends Controller
 {
 	public $show_action = true;
 	public $view_col = 'name';
-	public $listing_cols = ['id', 'name', 'designation', 'mobile', 'email', 'dept'];
+	public $listing_cols = ['id', 'name', 'designation', 'phone_primary', 'email', 'dept'];
 	
 	public function __construct() {
-		
+
 		// Field Access of Listing Columns
 		if(\Dwij\Laraadmin\Helpers\LAHelper::laravel_ver() == 5.3) {
 			$this->middleware(function ($request, $next) {

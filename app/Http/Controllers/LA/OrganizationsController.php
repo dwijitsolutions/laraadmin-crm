@@ -23,7 +23,7 @@ class OrganizationsController extends Controller
 {
 	public $show_action = true;
 	public $view_col = 'name';
-	public $listing_cols = ['id', 'profile_image', 'name', 'email', 'phone', 'website', 'assigned_to', 'city'];
+	public $listing_cols = ['id', 'profile_image', 'name', 'email', 'phone_primary', 'website', 'assigned_to', 'city'];
 	
 	public function __construct() {
 		// Field Access of Listing Columns
@@ -134,11 +134,9 @@ class OrganizationsController extends Controller
 	 */
 	public function edit($id)
 	{
-		if(Module::hasAccess("Organizations", "edit")) {
+		if(Module::hasAccess("Organizations", "edit")) {			
 			$organization = Organization::find($id);
-			if(isset($organization->id)) {
-				$organization = Organization::find($id);
-				
+			if(isset($organization->id)) {	
 				$module = Module::get('Organizations');
 				
 				$module->row = $organization;
@@ -218,7 +216,7 @@ class OrganizationsController extends Controller
 		$fields_popup = ModuleFields::getModuleFields('Organizations');
 		
 		for($i=0; $i < count($data->data); $i++) {
-			for ($j=0; $j < count($this->listing_cols); $j++) {
+			for ($j=0; $j < count($this->listing_cols); $j++) { 
 				$col = $this->listing_cols[$j];
 				if($fields_popup[$col] != null && $fields_popup[$col]->field_type_str == "Image") {
 					if($data->data[$i][$j] != 0) {

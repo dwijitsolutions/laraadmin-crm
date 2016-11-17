@@ -20,8 +20,8 @@ class CreateLeadsTable extends Migration
         Module::generate("Leads", 'leads', 'first_name', 'fa-check-square-o', [
             ["first_name", "First Name", "Name", false, "", 1, 100, false],
             ["last_name", "Last Name", "Name", false, "", 1, 100, true],
-            ["phone_primary", "Primary Phone	", "Mobile", false, "", 0, 20, false],
-            ["phone_secondary", "Mobile Phone", "Mobile", false, "", 0, 20, false],
+            ["phone_primary", "Primary Phone", "Mobile", false, "", 10, 20, true],
+            ["phone_secondary", "Secondary Phone", "Mobile", false, "", 10, 20, false],
             ["email_primary", "Primary Email", "Email", false, "", 0, 256, false],
             ["email_secondary", "Secondary Email", "Email", false, "", 0, 256, false],
             ["company", "Company", "String", false, "", 0, 256, false],

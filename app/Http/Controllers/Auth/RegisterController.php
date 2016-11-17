@@ -89,8 +89,8 @@ class RegisterController extends Controller
         $employee = Employee::create([
             'name' => $data['name'],
             'designation' => "Super Admin",
-            'mobile' => "8888888888",
-            'mobile2' => "",
+            'phone_primary' => "8888888888",
+            'phone_secondary' => "",
             'email' => $data['email'],
             'gender' => 'Male',
             'dept' => "1",

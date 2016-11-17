@@ -22,4 +22,12 @@ class Employee extends Model
 	protected $guarded = [];
 
 	protected $dates = ['deleted_at'];
+
+	/**
+     * Get the Lead associated with Employee
+     */
+	public function leads()
+	{
+		return $this->hasMany('App\Models\Lead', 'assigned_to', 'id');
+	}
 }

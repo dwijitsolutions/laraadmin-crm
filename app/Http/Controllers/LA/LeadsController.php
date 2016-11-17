@@ -23,7 +23,7 @@ class LeadsController extends Controller
 {
 	public $show_action = true;
 	public $view_col = 'first_name';
-	public $listing_cols = ['id', 'first_name', 'last_name', 'company', 'phone', 'email', 'assigned_to'];
+	public $listing_cols = ['id', 'first_name', 'last_name', 'company', 'phone_primary', 'email_primary', 'assigned_to'];
 	
 	public function __construct() {
 		// Field Access of Listing Columns

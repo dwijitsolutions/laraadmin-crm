@@ -4,7 +4,6 @@
  * Help: http://laraadmin.com
  */
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Dwij\Laraadmin\Models\Module;
@@ -22,8 +21,8 @@ class CreateEmployeesTable extends Migration
             ["name", "Name", "Name", false, "", 5, 250, true],
             ["designation", "Designation", "String", false, "", 0, 50, true],
             ["gender", "Gender", "Radio", false, "Male", 0, 0, true, ["Male","Female"]],
-            ["mobile", "Mobile", "Mobile", false, "", 10, 20, true],
-            ["mobile2", "Alternative Mobile", "Mobile", false, "", 10, 20, false],
+            ["phone_primary", "Primary Phone", "Mobile", false, "", 10, 20, true],
+            ["phone_secondary", "Secondary Phone", "Mobile", false, "", 10, 20, false],
             ["email", "Email", "Email", true, "", 5, 250, true],
             ["dept", "Department", "Dropdown", false, "0", 0, 0, true, "@departments"],
             ["city", "City", "String", false, "", 0, 50, false],
@@ -45,7 +44,7 @@ class CreateEmployeesTable extends Migration
             ["restricted",  "Restricted",   "Checkbox", false, false,       0,  0,      false],
             ["price",       "Price",        "Currency", false, 0.0,         0,  0,      true],
             ["date_release", "Date of Release", "Date", false, "NULL", 0, 0,   false],
-            ["time_started", "Start Time",  "Datetime", false, "NOW()", 0, 0, false],
+            ["time_started", "Start Time",  "Datetime", false, "now()", 0, 0, false],
             ["weight",      "Weight",       "Decimal",  false, 0.0,         0,  20,     true],
             ["publisher",   "Publisher",    "Dropdown", false, "Marvel",    0,  0,      false, ["Bloomsbury","Marvel","Universal"]],
             ["publisher",   "Publisher",    "Dropdown", false, 3,           0,  0,      false, "@publishers"],
