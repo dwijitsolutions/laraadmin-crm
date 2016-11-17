@@ -1,6 +1,6 @@
 <?php
 /**
- * Controller genrated using LaraAdmin
+ * Controller generated using LaraAdmin
  * Help: http://laraadmin.com
  */
 
@@ -134,11 +134,9 @@ class DepartmentsController extends Controller
 	 */
 	public function edit($id)
 	{
-		if(Module::hasAccess("Departments", "edit")) {
-			
+		if(Module::hasAccess("Departments", "edit")) {			
 			$department = Department::find($id);
-			if(isset($department->id)) {
-				
+			if(isset($department->id)) {	
 				$module = Module::get('Departments');
 				
 				$module->row = $department;
@@ -152,7 +150,7 @@ class DepartmentsController extends Controller
 					'record_id' => $id,
 					'record_name' => ucfirst("department"),
 				]);
-			}			
+			}
 		} else {
 			return redirect(config('laraadmin.adminRoute')."/");
 		}

@@ -1,10 +1,9 @@
 <?php
 /**
- * Migration genrated using LaraAdmin
+ * Migration generated using LaraAdmin
  * Help: http://laraadmin.com
  */
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Dwij\Laraadmin\Models\Module;
@@ -34,7 +33,7 @@ class CreateDepartmentsTable extends Migration
             ["restricted",  "Restricted",   "Checkbox", false, false,       0,  0,      false],
             ["price",       "Price",        "Currency", false, 0.0,         0,  0,      true],
             ["date_release", "Date of Release", "Date", false, "NULL", 0, 0,   false],
-            ["time_started", "Start Time",  "Datetime", false, "NOW()", 0, 0, false],
+            ["time_started", "Start Time",  "Datetime", false, "now()", 0, 0, false],
             ["weight",      "Weight",       "Decimal",  false, 0.0,         0,  20,     true],
             ["publisher",   "Publisher",    "Dropdown", false, "Marvel",    0,  0,      false, ["Bloomsbury","Marvel","Universal"]],
             ["publisher",   "Publisher",    "Dropdown", false, 3,           0,  0,      false, "@publishers"],
@@ -52,7 +51,7 @@ class CreateDepartmentsTable extends Migration
             ["password",    "Password",     "Password", false, "",          6,  250,    true],
             ["status",      "Status",       "Radio",    false, "Published", 0,  0,      false, ["Draft","Published","Unpublished"]],
             ["author",      "Author",       "String",   false, "JRR Tolkien", 0, 250,   true],
-            ["genre",       "Genre",        "Taginput", false, ["Fantacy","Adventure"], 0, 0, false],
+            ["genre",       "Genre",        "Taginput", false, ["Fantasy","Adventure"], 0, 0, false],
             ["description", "Description",  "Textarea", false, "",          0,  1000,   false],
             ["short_intro", "Introduction", "TextField",false, "",          5,  250,    true],
             ["website",     "Website",      "URL",      false, "http://dwij.in", 0, 0,  false],

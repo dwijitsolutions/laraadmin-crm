@@ -47,7 +47,7 @@
 
 @la_access("Contacts", "create")
 <div class="modal fade" id="AddModal" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -56,30 +56,46 @@
 			{!! Form::open(['action' => 'LA\ContactsController@store', 'id' => 'contact-add-form']) !!}
 			<div class="modal-body">
 				<div class="box-body">
-                    @la_form($module)
-					
-					{{--
-					@la_input($module, 'designation')
-					@la_input($module, 'first_name')
-					@la_input($module, 'last_name')
-					@la_input($module, 'title')
-					@la_input($module, 'organization')
-					@la_input($module, 'phone_primary')
-					@la_input($module, 'phone_secondary')
-					@la_input($module, 'home_phone')
-					@la_input($module, 'lead_source')
-					@la_input($module, 'department')
-					@la_input($module, 'email')
-					@la_input($module, 'email2')
-					@la_input($module, 'dob')
-					@la_input($module, 'assistant')
-					@la_input($module, 'assistant_phone')
-					@la_input($module, 'assigned_to')
-					@la_input($module, 'address')
-					@la_input($module, 'city')
-					@la_input($module, 'description')
-					@la_input($module, 'profile_picture')
-					--}}
+                    <div class="row">
+						<div class="col-md-4">@la_input($module, 'designation')</div>
+						<div class="col-md-4">@la_input($module, 'first_name')</div>
+						<div class="col-md-4">@la_input($module, 'last_name')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'title')</div>
+						<div class="col-md-6">@la_input($module, 'organization')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'phone_primary')</div>
+						<div class="col-md-6">@la_input($module, 'phone_secondary')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'home_phone')</div>
+						<div class="col-md-6">@la_input($module, 'lead_source')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'department')</div>
+						<div class="col-md-6">@la_input($module, 'email')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'email2')</div>
+						<div class="col-md-6">@la_input($module, 'dob')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'assistant')</div>
+						<div class="col-md-6">@la_input($module, 'assistant_phone')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'assigned_to')</div>
+						<div class="col-md-6">@la_input($module, 'city')</div>						
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'address')</div>
+						<div class="col-md-6">@la_input($module, 'description')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'profile_picture')</div>
+					</div>
 				</div>
 			</div>
 			<div class="modal-footer">

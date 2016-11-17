@@ -18,7 +18,7 @@ class CreateContactsTable extends Migration
     public function up()
     {
         Module::generate("Contacts", 'contacts', 'first_name', 'fa-user', [
-            ["designation", "Designation", "Dropdown", false, "", 0, 0, false, ["None","Mr.","Ms.","Mrs.","Dr.","Prof."]],
+            ["designation", "Designation", "Dropdown", true, "", 0, 0, false, ["None","Mr.","Ms.","Mrs.","Dr.","Prof."]],
             ["first_name", "First Name", "Name", false, "", 0, 256, false],
             ["last_name", "Last Name", "Name", false, "", 0, 256, true],
             ["title", "Title", "String", false, "", 0, 256, false],
