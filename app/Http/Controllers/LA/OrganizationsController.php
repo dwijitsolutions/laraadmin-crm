@@ -86,6 +86,10 @@ class OrganizationsController extends Controller
 			}
 			
 			$insert_id = Module::insert("Organizations", $request);
+
+			// add to ElasticSearch index
+			$organization = Organization::find($insert_id);
+			$organization->addToIndex();
 			
 			return redirect()->route(config('laraadmin.adminRoute') . '.organizations.index');
 			
@@ -176,6 +180,9 @@ class OrganizationsController extends Controller
 			}
 			
 			$insert_id = Module::updateRow("Organizations", $request, $id);
+
+			// reindex an entire model
+			Book::reindex();
 			
 			return redirect()->route(config('laraadmin.adminRoute') . '.organizations.index');
 			
@@ -194,6 +201,9 @@ class OrganizationsController extends Controller
 	{
 		if(Module::hasAccess("Organizations", "delete")) {
 			Organization::find($id)->delete();
+
+			// reindex an entire model
+			Book::reindex();
 			
 			// Redirecting to index() method
 			return redirect()->route(config('laraadmin.adminRoute') . '.organizations.index');

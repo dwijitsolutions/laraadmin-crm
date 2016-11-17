@@ -8,10 +8,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Elasticquent\ElasticquentTrait;
 
 class Organization extends Model
 {
     use SoftDeletes;
+	use ElasticquentTrait;
 	
 	protected $table = 'organizations';
 	

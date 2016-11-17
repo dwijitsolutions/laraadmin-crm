@@ -15,6 +15,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/* ================== Test ElasticSearch ================== */
+
+Route::get('search/{query}', function ($query) {
+	echo "\n<br>Query: ".$query."\n\n<br><br><br>";
+    $orgs = \App\Models\Organization::search($query);
+	if($orgs->totalHits()) {
+		foreach ($orgs as $org) {
+			echo $org->name."(".$org->documentScore().")<br>\n";
+		}
+	} else {
+		echo "No result";
+	}
+	echo "\n<br>totalHits: ".$orgs->totalHits()."\n<br>";
+	echo "\n<br>maxScore: ".$orgs->maxScore()."\n<br>";
+	echo "\n<br>took: ".$orgs->took()."\n<br>";
+});
+
 /* ================== Homepage + Admin Routes ================== */
 
 require __DIR__.'/admin_routes.php';
