@@ -74,4 +74,8 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	/* ================== Contacts ================== */
 	Route::resource(config('laraadmin.adminRoute') . '/contacts', 'LA\ContactsController');
 	Route::get(config('laraadmin.adminRoute') . '/contact_dt_ajax', 'LA\ContactsController@dtajax');
+
+	/* ================== Opportunities ================== */
+	Route::resource(config('laraadmin.adminRoute') . '/opportunities', 'LA\OpportunitiesController');
+	Route::get(config('laraadmin.adminRoute') . '/opportunity_dt_ajax', 'LA\OpportunitiesController@dtajax');
 });
