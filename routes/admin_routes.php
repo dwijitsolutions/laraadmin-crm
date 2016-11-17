@@ -75,11 +75,10 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	Route::resource(config('laraadmin.adminRoute') . '/contacts', 'LA\ContactsController');
 	Route::get(config('laraadmin.adminRoute') . '/contact_dt_ajax', 'LA\ContactsController@dtajax');
 
-<<<<<<< HEAD
 	/* ================== Opportunities ================== */
 	Route::resource(config('laraadmin.adminRoute') . '/opportunities', 'LA\OpportunitiesController');
 	Route::get(config('laraadmin.adminRoute') . '/opportunity_dt_ajax', 'LA\OpportunitiesController@dtajax');
-=======
+	
 	/* ================== Leads ================== */
 	Route::resource(config('laraadmin.adminRoute') . '/leads', 'LA\LeadsController');
 	Route::get(config('laraadmin.adminRoute') . '/lead_dt_ajax', 'LA\LeadsController@dtajax');
@@ -87,5 +86,4 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	/* ================== Projects ================== */
 	Route::resource(config('laraadmin.adminRoute') . '/projects', 'LA\ProjectsController');
 	Route::get(config('laraadmin.adminRoute') . '/project_dt_ajax', 'LA\ProjectsController@dtajax');
->>>>>>> e8b95c6b43c0e305370c6e4c957ebb087ec12715
 });
