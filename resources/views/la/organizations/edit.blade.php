@@ -38,16 +38,16 @@
 					@la_input($module, 'phone_primary')
 					@la_input($module, 'phone_secondary')
 					@la_input($module, 'website')
+					@la_input($module, 'type')
 					@la_input($module, 'assigned_to')
 					@la_input($module, 'connect_since')
 					@la_input($module, 'address')
 					@la_input($module, 'country')
 					@la_input($module, 'city')
+					@la_input($module, 'postal_code')
 					@la_input($module, 'description')
 					@la_input($module, 'profile_image')
 					@la_input($module, 'profile')
-					@la_input($module, 'type')
-					@la_input($module, 'postal_code')
 					--}}
                     <br>
 					<div class="form-group">

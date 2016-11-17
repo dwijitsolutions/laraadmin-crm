@@ -112,16 +112,16 @@
 						@la_display($module, 'phone_primary')
 						@la_display($module, 'phone_secondary')
 						@la_display($module, 'website')
+						@la_display($module, 'type')
 						@la_display($module, 'assigned_to')
 						@la_display($module, 'connect_since')
 						@la_display($module, 'address')
 						@la_display($module, 'country')
 						@la_display($module, 'city')
+						@la_display($module, 'postal_code')
 						@la_display($module, 'description')
 						@la_display($module, 'profile_image')
 						@la_display($module, 'profile')
-						@la_display($module, 'type')
-						@la_display($module, 'postal_code')
 					</div>
 				</div>
 			</div>
