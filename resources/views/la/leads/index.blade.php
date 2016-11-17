@@ -1,14 +1,14 @@
 @extends("la.layouts.app")
 
-@section("contentheader_title", "Contacts")
-@section("contentheader_description", "Contacts listing")
-@section("section", "Contacts")
+@section("contentheader_title", "Leads")
+@section("contentheader_description", "Leads listing")
+@section("section", "Leads")
 @section("sub_section", "Listing")
-@section("htmlheader_title", "Contacts Listing")
+@section("htmlheader_title", "Leads Listing")
 
 @section("headerElems")
-@la_access("Contacts", "create")
-	<button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#AddModal">Add Contact</button>
+@la_access("Leads", "create")
+	<button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#AddModal">Add Lead</button>
 @endla_access
 @endsection
 
@@ -45,40 +45,36 @@
 	</div>
 </div>
 
-@la_access("Contacts", "create")
+@la_access("Leads", "create")
 <div class="modal fade" id="AddModal" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Add Contact</h4>
+				<h4 class="modal-title" id="myModalLabel">Add Lead</h4>
 			</div>
-			{!! Form::open(['action' => 'LA\ContactsController@store', 'id' => 'contact-add-form']) !!}
+			{!! Form::open(['action' => 'LA\LeadsController@store', 'id' => 'lead-add-form']) !!}
 			<div class="modal-body">
 				<div class="box-body">
                     @la_form($module)
 					
 					{{--
-					@la_input($module, 'designation')
 					@la_input($module, 'first_name')
 					@la_input($module, 'last_name')
-					@la_input($module, 'title')
-					@la_input($module, 'organization')
-					@la_input($module, 'office_phone')
-					@la_input($module, 'mobile_phone')
-					@la_input($module, 'home_phone')
-					@la_input($module, 'lead_source')
-					@la_input($module, 'department')
+					@la_input($module, 'phone')
+					@la_input($module, 'phone2')
 					@la_input($module, 'email')
-					@la_input($module, 'email2')
-					@la_input($module, 'dob')
-					@la_input($module, 'assistant')
-					@la_input($module, 'assistant_phone')
+					@la_input($module, 'email1')
+					@la_input($module, 'company')
+					@la_input($module, 'title')
+					@la_input($module, 'lead_source')
+					@la_input($module, 'industry')
 					@la_input($module, 'assigned_to')
+					@la_input($module, 'employee_count')
 					@la_input($module, 'address')
 					@la_input($module, 'city')
+					@la_input($module, 'country')
 					@la_input($module, 'description')
-					@la_input($module, 'profile_picture')
 					--}}
 				</div>
 			</div>
@@ -105,7 +101,7 @@ $(function () {
 	$("#example1").DataTable({
 		processing: true,
         serverSide: true,
-        ajax: "{{ url(config('laraadmin.adminRoute') . '/contact_dt_ajax') }}",
+        ajax: "{{ url(config('laraadmin.adminRoute') . '/lead_dt_ajax') }}",
 		language: {
 			lengthMenu: "_MENU_",
 			search: "_INPUT_",
@@ -115,7 +111,7 @@ $(function () {
 		columnDefs: [ { orderable: false, targets: [-1] }],
 		@endif
 	});
-	$("#contact-add-form").validate({
+	$("#lead-add-form").validate({
 		
 	});
 });
