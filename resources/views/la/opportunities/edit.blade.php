@@ -34,7 +34,7 @@
 					
 					{{--
 					@la_input($module, 'name')
-					@la_input($module, 'Organisation')
+					@la_input($module, 'organisation')
 					@la_input($module, 'contact')
 					@la_input($module, 'amount')
 					@la_input($module, 'expected_close_date')
@@ -43,6 +43,9 @@
 					@la_input($module, 'type')
 					@la_input($module, 'lead_source')
 					@la_input($module, 'sales_stage')
+					@la_input($module, 'probability')
+					@la_input($module, 'forecast_amount')
+					@la_input($module, 'description')
 					--}}
                     <br>
 					<div class="form-group">

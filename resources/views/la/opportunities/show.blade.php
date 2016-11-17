@@ -108,7 +108,7 @@
 					</div>
 					<div class="panel-body">
 						@la_display($module, 'name')
-						@la_display($module, 'Organisation')
+						@la_display($module, 'organisation')
 						@la_display($module, 'contact')
 						@la_display($module, 'amount')
 						@la_display($module, 'expected_close_date')
@@ -117,6 +117,9 @@
 						@la_display($module, 'type')
 						@la_display($module, 'lead_source')
 						@la_display($module, 'sales_stage')
+						@la_display($module, 'probability')
+						@la_display($module, 'forecast_amount')
+						@la_display($module, 'description')
 					</div>
 				</div>
 			</div>

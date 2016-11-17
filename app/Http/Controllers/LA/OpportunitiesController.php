@@ -23,7 +23,7 @@ class OpportunitiesController extends Controller
 {
 	public $show_action = true;
 	public $view_col = 'name';
-	public $listing_cols = ['id', 'name', 'Organisation', 'sales_stage', 'lead_source', 'expected_close_date', 'amount', 'assigned_to', 'contact'];
+	public $listing_cols = ['id', 'name', 'organisation', 'sales_stage', 'lead_source', 'expected_close_date', 'amount', 'assigned_to', 'contact'];
 	
 	public function __construct() {
 		// Field Access of Listing Columns
