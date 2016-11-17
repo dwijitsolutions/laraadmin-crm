@@ -1,6 +1,6 @@
 <?php
 /**
- * Migration genrated using LaraAdmin
+ * Migration generated using LaraAdmin
  * Help: http://laraadmin.com
  */
 
@@ -20,19 +20,19 @@ class CreateOrganizationsTable extends Migration
         Module::generate("Organizations", 'organizations', 'name', 'fa-university', [
             ["name", "Name", "Name", true, "", 5, 250, true],
             ["email", "Email", "Email", true, "", 0, 250, false],
-            ["phone_primary", "Primary Phone", "Mobile", false, "", 10, 20, true],
+            ["phone_primary", "Primary Phone", "Mobile", false, "", 10, 20, false],
             ["phone_secondary", "Secondary Phone", "Mobile", false, "", 10, 20, false],
             ["website", "Website", "URL", false, "http://", 0, 250, false],
+            ["type", "Type", "Dropdown", false, "", 0, 0, false, ["Analyst","Competitor","Customer","Integrator","Investor","Partner","Press","Prospect","Reseller","Other"]],
             ["assigned_to", "Assigned to", "Dropdown", false, "0", 0, 0, false, "@employees"],
             ["connect_since", "Connected Since", "Date", false, "NULL", 0, 0, false],
-            ["address", "Address", "Address", false, "", 0, 1000, true],
+            ["address", "Address", "Address", false, "", 0, 1000, false],
             ["country", "Country", "String", false, "", 0, 256, false],
             ["city", "City", "String", false, "", 0, 250, true],
+            ["postal_code", "Postal Code", "String", false, "", 0, 256, false],
             ["description", "Description", "Textarea", false, "", 0, 1000, false],
             ["profile_image", "Profile Image", "Image", false, "", 0, 250, false],
             ["profile", "Company Profile", "File", false, "", 0, 250, false],
-            ["type", "Type", "Dropdown", false, "", 0, 0, false, ["Analyst","Competitor","Customer","Integrator","Investor","Partner","Press","Prospect","Reseller","Other"]],
-            ["postal_code", "Postal Code", "String", false, "", 0, 256, false],
         ]);
 		
 		/*
@@ -63,7 +63,7 @@ class CreateOrganizationsTable extends Migration
             ["password",    "Password",     "Password", false, "",          6,  250,    true],
             ["status",      "Status",       "Radio",    false, "Published", 0,  0,      false, ["Draft","Published","Unpublished"]],
             ["author",      "Author",       "String",   false, "JRR Tolkien", 0, 250,   true],
-            ["genre",       "Genre",        "Taginput", false, ["Fantacy","Adventure"], 0, 0, false],
+            ["genre",       "Genre",        "Taginput", false, ["Fantasy","Adventure"], 0, 0, false],
             ["description", "Description",  "Textarea", false, "",          0,  1000,   false],
             ["short_intro", "Introduction", "TextField",false, "",          5,  250,    true],
             ["website",     "Website",      "URL",      false, "http://dwij.in", 0, 0,  false],
