@@ -23,7 +23,7 @@ class TicketsController extends Controller
 {
 	public $show_action = true;
 	public $view_col = 'title';
-	public $listing_cols = ['id', 'title', 'project', 'organisation', 'status', 'priority', 'assigned_to', 'contact'];
+	public $listing_cols = ['id', 'title', 'project', 'organization', 'status', 'priority', 'assigned_to', 'contact'];
 	
 	public function __construct() {
 		// Field Access of Listing Columns

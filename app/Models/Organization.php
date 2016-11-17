@@ -36,7 +36,7 @@ class Organization extends Model
      */
 	public function opportunities()
 	{
-		return $this->hasMany('App\Models\Opportunity', 'organisation', 'id');
+		return $this->hasMany('App\Models\Opportunity', 'organization', 'id');
 	}
 
 	/**

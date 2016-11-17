@@ -19,7 +19,7 @@ class CreateOpportunitiesTable extends Migration
     {
         Module::generate("Opportunities", 'opportunities', 'name', 'fa-lightbulb-o', [
             ["name", "Name", "Name", true, "", 0, 250, true],
-            ["organisation", "Organisation", "Dropdown", false, "", 0, 0, false, "@organizations"],
+            ["organization", "Organization", "Dropdown", false, "", 0, 0, false, "@organizations"],
             ["contact", "Contact", "Dropdown", false, "", 0, 0, false, "@contacts"],
             ["amount", "Amount", "Integer", false, "", 0, 11, false],
             ["expected_close_date", "Expected close date", "Date", false, "", 0, 0, false],

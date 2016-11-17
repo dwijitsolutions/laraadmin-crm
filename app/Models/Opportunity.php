@@ -36,7 +36,7 @@ class Opportunity extends Model
      */
     public function organization_info()
     {
-        return $this->belongsTo('App\Models\Organization', 'organisation', 'id');
+        return $this->belongsTo('App\Models\Organization', 'organization', 'id');
     }
 
 	/**

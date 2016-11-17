@@ -60,7 +60,7 @@
 					
 					{{--
 					@la_input($module, 'name')
-					@la_input($module, 'organisation')
+					@la_input($module, 'organization')
 					@la_input($module, 'contact')
 					@la_input($module, 'amount')
 					@la_input($module, 'expected_close_date')

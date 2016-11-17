@@ -18,7 +18,7 @@ class CreateProjectsTable extends Migration
     public function up()
     {
         Module::generate("Projects", 'projects', 'name', 'fa-clone', [
-            ["name", "Project Name", "Name", true, "", 0, 256, true],
+            ["name", "Project Name", "Name", true, "", 0, 250, true],
             ["start_date", "Start Date", "Date", false, "", 0, 0, false],
             ["target_end_date", "Target End Date", "Date", false, "", 0, 0, false],
             ["actual_end_date", "Actual End Date", "Date", false, "", 0, 0, false],

@@ -19,7 +19,7 @@ class CreateTicketsTable extends Migration
     {
         Module::generate("Tickets", 'tickets', 'title', 'fa-ticket', [
             ["title", "Title", "Name", false, "", 0, 250, true],
-            ["organisation", "Organisation", "Dropdown", false, "", 0, 0, false, "@organizations"],
+            ["organization", "Organization", "Dropdown", false, "", 0, 0, false, "@organizations"],
             ["contact", "Contact", "Dropdown", false, "", 0, 0, false, "@contacts"],
             ["assigned_to", "Assigned to", "Dropdown", false, "", 0, 0, true, "@employees"],
             ["project", "Project", "Dropdown", false, "", 0, 0, false, "@projects"],

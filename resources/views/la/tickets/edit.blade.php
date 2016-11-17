@@ -34,7 +34,7 @@
 					
 					{{--
 					@la_input($module, 'title')
-					@la_input($module, 'organisation')
+					@la_input($module, 'organization')
 					@la_input($module, 'contact')
 					@la_input($module, 'assigned_to')
 					@la_input($module, 'project')

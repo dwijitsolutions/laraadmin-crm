@@ -108,7 +108,7 @@
 					</div>
 					<div class="panel-body">
 						@la_display($module, 'title')
-						@la_display($module, 'organisation')
+						@la_display($module, 'organization')
 						@la_display($module, 'contact')
 						@la_display($module, 'assigned_to')
 						@la_display($module, 'project')
