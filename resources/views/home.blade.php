@@ -176,18 +176,19 @@
         <div class="col-lg-7">
             <h3>Drop Us A Line</h3>
             <br>
-            <form role="form" action="#" method="post" enctype="plain">
-                <div class="form-group">
-                    <label for="name1">Your Name</label>
-                    <input type="name" name="Name" class="form-control" id="name1" placeholder="Your Name">
+            <form role="form" action="{{ url('store_lead_form_1') }}" method="POST" enctype="plain">
+                {{ csrf_field() }}
+                 <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email1">Email address</label>
-                    <input type="email" name="Mail" class="form-control" id="email1" placeholder="Enter email">
+                    <label for="email">Email address</label>
+                    <input type="email" name="email_primary" class="form-control" id="email_primary" placeholder="Enter email" required>
                 </div>
                 <div class="form-group">
                     <label>Your Text</label>
-                    <textarea class="form-control" name="Message" rows="3"></textarea>
+                    <textarea class="form-control" name="description" rows="3"></textarea>
                 </div>
                 <br>
                 <button type="submit" class="btn btn-large btn-success">SUBMIT</button>

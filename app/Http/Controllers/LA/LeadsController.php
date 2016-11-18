@@ -250,4 +250,35 @@ class LeadsController extends Controller
 		$out->setData($data);
 		return $out;
 	}
+
+	/**
+	 * Store a lead in database from Homepage form
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function store_lead_form_1(Request $request)
+	{
+		$name = $request->input('first_name');
+		$email = $request->input('email_primary');
+		$description = $request->input('description');
+
+		DB::table('leads')->insert([[
+			'first_name' => $name,
+			'email_primary' => $email,
+			'description' => $description,
+			'phone_secondary' => '',
+			'company' => '',
+			'title' => '',
+			'lead_source' => '',
+			'address' => '',
+			'city' => '',
+			'country' => '',
+			'address' => '',
+			'email_secondary' => ''
+
+		]]);
+
+		return redirect("home");
+	}
 }

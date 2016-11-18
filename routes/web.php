@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/* ================== Home page lead Horm  ================== */
+Route::post('store_lead_form_1', 'LA\LeadsController@store_lead_form_1');
+
 /* ================== Test ElasticSearch ================== */
 
 Route::get('search/{query}', function ($query) {
