@@ -22,4 +22,20 @@ class Department extends Model
 	protected $guarded = [];
 
 	protected $dates = ['deleted_at'];
+
+	/**
+     * Get the Employees associated with Department
+     */
+	public function employees()
+	{
+		return $this->hasMany('App\Models\Employee', 'dept', 'id');
+	}
+
+	/**
+     * Get the Roles associated with Department
+     */
+	public function roles()
+	{
+		return $this->hasMany('App\Models\Role', 'dept', 'id');
+	}
 }

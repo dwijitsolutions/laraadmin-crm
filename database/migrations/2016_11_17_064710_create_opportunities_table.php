@@ -21,7 +21,7 @@ class CreateOpportunitiesTable extends Migration
             ["name", "Name", "Name", true, "", 0, 250, true],
             ["organization", "Organization", "Dropdown", false, "", 0, 0, false, "@organizations"],
             ["contact", "Contact", "Dropdown", false, "", 0, 0, false, "@contacts"],
-            ["amount", "Amount", "Integer", false, "", 0, 11, false],
+            ["amount", "Amount", "Integer", false, "0", 0, 11, false],
             ["expected_close_date", "Expected close date", "Date", false, "", 0, 0, false],
             ["next_step", "Next Step", "TextField", false, "", 0, 256, false],
             ["assigned_to", "Assigned to", "Dropdown", false, "", 0, 0, false, "@employees"],
