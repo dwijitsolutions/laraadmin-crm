@@ -61,6 +61,7 @@
 		<li class=""><a href="{{ url(config('laraadmin.adminRoute') . '/employees') }}" data-toggle="tooltip" data-placement="right" title="Back to Employees"><i class="fa fa-chevron-left"></i></a></li>
 		<li class="active"><a role="tab" data-toggle="tab" class="active" href="#tab-info" data-target="#tab-info"><i class="fa fa-bars"></i> General Info</a></li>
 		<li class=""><a role="tab" data-toggle="tab" href="#tab-timeline" data-target="#tab-timeline"><i class="fa fa-clock-o"></i> Timeline</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-organizations" data-target="#tab-organizations"><i class="fa fa-clock-o"></i> Organizations</a></li>
 		@if($employee->id == Auth::user()->id || Entrust::hasRole("SUPER_ADMIN"))
 			<li class=""><a role="tab" data-toggle="tab" href="#tab-account-settings" data-target="#tab-account-settings"><i class="fa fa-key"></i> Account settings</a></li>
 		@endif
@@ -200,6 +201,36 @@
 			</ul>
 			<!--<div class="text-center p30"><i class="fa fa-list-alt" style="font-size: 100px;"></i> <br> No posts to show</div>-->
 		</div>
+
+		<div role="tabpanel" class="tab-pane fade" id="tab-organizations">
+			<div class="tab-content">
+				<div class="panel">
+					<div class="panel-default panel-heading">
+						<h4>Organizations assigned to {{ $employee->name }}</h4>
+					</div>
+					<div class="panel-body p20">
+						<table id="dt-employee-organizations" class="table table-bordered">
+							<thead>
+							<tr class="success">
+								<th>Id</th>
+								<th>Profile Image</th>
+								<th>Name</th>
+								<th>Primary Email</th>
+								<th>Primary Phone</th>
+								<th>Website</th>
+								<th>Assigned to</th>
+								<th>City</th>
+								<th>Actions</th>
+							</tr>
+							</thead>
+							<tbody>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 		
 		@if($employee->id == Auth::user()->id || Entrust::hasRole("SUPER_ADMIN"))
 		<div role="tabpanel" class="tab-pane fade" id="tab-account-settings">
@@ -250,7 +281,12 @@
 </div>
 @endsection
 
+@push('styles')
+<link rel="stylesheet" type="text/css" href="{{ asset('la-assets/plugins/datatables/datatables.min.css') }}"/>
+@endpush
+
 @push('scripts')
+<script src="{{ asset('la-assets/plugins/datatables/datatables.min.js') }}"></script>
 <script>
 $(function () {
 	@if($employee->id == Auth::user()->id || Entrust::hasRole("SUPER_ADMIN"))
@@ -258,6 +294,24 @@ $(function () {
 		
 	});
 	@endif
+
+	var dt_employee_organizations = $("#dt-employee-organizations").DataTable({
+		processing: true,
+		serverSide: true,
+		ajax: {
+			"url": "{{ url(config('laraadmin.adminRoute') . '/organization_dt_ajax') }}",
+			"data": function ( data_custom ) {
+				data_custom.filter_column = "assigned_to";
+				data_custom.filter_column_value = "{{ $employee->id }}";
+			}
+		},
+		language: {
+			lengthMenu: "_MENU_",
+			search: "_INPUT_",
+			searchPlaceholder: "Search"
+		},
+		columnDefs: [ { orderable: false, targets: [-1] }]
+	});
 });
 </script>
 @endpush

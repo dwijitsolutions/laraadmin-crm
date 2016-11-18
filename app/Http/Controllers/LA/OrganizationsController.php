@@ -88,8 +88,8 @@ class OrganizationsController extends Controller
 			$insert_id = Module::insert("Organizations", $request);
 			
 			// add to ElasticSearch index
-			$organization = Organization::find($insert_id);
-			$organization->addToIndex();
+			// $organization = Organization::find($insert_id);
+			// $organization->addToIndex();
 
 			return redirect()->route(config('laraadmin.adminRoute') . '.organizations.index');
 			
@@ -182,7 +182,7 @@ class OrganizationsController extends Controller
 			$insert_id = Module::updateRow("Organizations", $request, $id);
 
 			// reindex an entire model
-			Book::reindex();
+			// Organization::reindex();
 			
 			return redirect()->route(config('laraadmin.adminRoute') . '.organizations.index');
 			
@@ -201,9 +201,9 @@ class OrganizationsController extends Controller
 	{
 		if(Module::hasAccess("Organizations", "delete")) {
 			Organization::find($id)->delete();
-
+			
 			// reindex an entire model
-			Book::reindex();
+			// Organization::reindex();
 			
 			// Redirecting to index() method
 			return redirect()->route(config('laraadmin.adminRoute') . '.organizations.index');
@@ -217,9 +217,13 @@ class OrganizationsController extends Controller
 	 *
 	 * @return
 	 */
-	public function dtajax()
+	public function dtajax(Request $request)
 	{
-		$values = DB::table('organizations')->select($this->listing_cols)->whereNull('deleted_at');
+		if(isset($request->filter_column)) {
+			$values = DB::table('organizations')->select($this->listing_cols)->whereNull('deleted_at')->where($request->filter_column, $request->filter_column_value);
+		} else {
+			$values = DB::table('organizations')->select($this->listing_cols)->whereNull('deleted_at');
+		}
 		$out = Datatables::of($values)->make();
 		$data = $out->getData();
 
