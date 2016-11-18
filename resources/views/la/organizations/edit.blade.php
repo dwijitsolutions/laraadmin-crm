@@ -28,27 +28,37 @@
 	</div>
 	<div class="box-body">
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
+			<div class="col-md-10 col-md-offset-1">
 				{!! Form::model($organization, ['route' => [config('laraadmin.adminRoute') . '.organizations.update', $organization->id ], 'method'=>'PUT', 'id' => 'organization-edit-form']) !!}
-					@la_form($module)
-					
-					{{--
-					@la_input($module, 'name')
-					@la_input($module, 'email')
-					@la_input($module, 'phone_primary')
-					@la_input($module, 'phone_secondary')
-					@la_input($module, 'website')
-					@la_input($module, 'type')
-					@la_input($module, 'assigned_to')
-					@la_input($module, 'connect_since')
-					@la_input($module, 'address')
-					@la_input($module, 'country')
-					@la_input($module, 'city')
-					@la_input($module, 'postal_code')
-					@la_input($module, 'description')
-					@la_input($module, 'profile_image')
-					@la_input($module, 'profile')
-					--}}
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'name')</div>
+						<div class="col-md-6">@la_input($module, 'email')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'phone_primary')</div>
+						<div class="col-md-6">@la_input($module, 'phone_secondary')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'website')</div>
+						<div class="col-md-6">@la_input($module, 'type')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'assigned_to')</div>
+						<div class="col-md-6">@la_input($module, 'connect_since')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'address')</div>
+						<div class="col-md-6">@la_input($module, 'country')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'city')</div>
+						<div class="col-md-6">@la_input($module, 'postal_code')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'description')</div>
+						<div class="col-md-2 col-md-offset-1">@la_input($module, 'profile_image')</div>
+						<div class="col-md-3">@la_input($module, 'profile')</div>
+					</div>
                     <br>
 					<div class="form-group">
 						{!! Form::submit( 'Update', ['class'=>'btn btn-success']) !!} <a href="{{ url(config('laraadmin.adminRoute') . '/organizations') }}" class="btn btn-default pull-right">Cancel</a>

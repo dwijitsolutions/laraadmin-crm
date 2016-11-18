@@ -28,22 +28,28 @@
 	</div>
 	<div class="box-body">
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
+			<div class="col-md-10 col-md-offset-1">
 				{!! Form::model($ticket, ['route' => [config('laraadmin.adminRoute') . '.tickets.update', $ticket->id ], 'method'=>'PUT', 'id' => 'ticket-edit-form']) !!}
-					@la_form($module)
-					
-					{{--
-					@la_input($module, 'title')
-					@la_input($module, 'organization')
-					@la_input($module, 'contact')
-					@la_input($module, 'assigned_to')
-					@la_input($module, 'project')
-					@la_input($module, 'priority')
-					@la_input($module, 'status')
-					@la_input($module, 'hours')
-					@la_input($module, 'description')
-					@la_input($module, 'solution')
-					--}}
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'title')</div>
+						<div class="col-md-6">@la_input($module, 'organization')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'contact')</div>
+						<div class="col-md-6">@la_input($module, 'assigned_to')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'project')</div>
+						<div class="col-md-6">@la_input($module, 'priority')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'status')</div>
+						<div class="col-md-6">@la_input($module, 'hours')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'description')</div>
+						<div class="col-md-6">@la_input($module, 'solution')</div>
+					</div>
                     <br>
 					<div class="form-group">
 						{!! Form::submit( 'Update', ['class'=>'btn btn-success']) !!} <a href="{{ url(config('laraadmin.adminRoute') . '/tickets') }}" class="btn btn-default pull-right">Cancel</a>

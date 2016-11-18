@@ -107,16 +107,26 @@
 						<h4>General Info</h4>
 					</div>
 					<div class="panel-body">
-						@la_display($module, 'title')
-						@la_display($module, 'organization')
-						@la_display($module, 'contact')
-						@la_display($module, 'assigned_to')
-						@la_display($module, 'project')
-						@la_display($module, 'priority')
-						@la_display($module, 'status')
-						@la_display($module, 'hours')
-						@la_display($module, 'description')
-						@la_display($module, 'solution')
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'title')</div>
+							<div class="col-md-6">@la_display($module, 'organization')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'contact')</div>
+							<div class="col-md-6">@la_display($module, 'assigned_to')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'project')</div>
+							<div class="col-md-6">@la_display($module, 'priority')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'status')</div>
+							<div class="col-md-6">@la_display($module, 'hours')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'description')</div>
+							<div class="col-md-6">@la_display($module, 'solution')</div>
+						</div>
 					</div>
 				</div>
 			</div>

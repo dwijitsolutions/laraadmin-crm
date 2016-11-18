@@ -107,21 +107,37 @@
 						<h4>General Info</h4>
 					</div>
 					<div class="panel-body">
-						@la_display($module, 'name')
-						@la_display($module, 'email')
-						@la_display($module, 'phone_primary')
-						@la_display($module, 'phone_secondary')
-						@la_display($module, 'website')
-						@la_display($module, 'type')
-						@la_display($module, 'assigned_to')
-						@la_display($module, 'connect_since')
-						@la_display($module, 'address')
-						@la_display($module, 'country')
-						@la_display($module, 'city')
-						@la_display($module, 'postal_code')
-						@la_display($module, 'description')
-						@la_display($module, 'profile_image')
-						@la_display($module, 'profile')
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'name')</div>
+							<div class="col-md-6">@la_display($module, 'email')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'phone_primary')</div>
+							<div class="col-md-6">@la_display($module, 'phone_secondary')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'website')</div>
+							<div class="col-md-6">@la_display($module, 'type')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'assigned_to')</div>
+							<div class="col-md-6">@la_display($module, 'connect_since')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'address')</div>
+							<div class="col-md-6">@la_display($module, 'country')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'city')</div>
+							<div class="col-md-6">@la_display($module, 'postal_code')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'description')</div>
+							<div class="col-md-6">@la_display($module, 'profile_image')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'profile')</div>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -47,7 +47,7 @@
 
 @la_access("Tickets", "create")
 <div class="modal fade" id="AddModal" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -56,20 +56,26 @@
 			{!! Form::open(['action' => 'LA\TicketsController@store', 'id' => 'ticket-add-form']) !!}
 			<div class="modal-body">
 				<div class="box-body">
-                    @la_form($module)
-					
-					{{--
-					@la_input($module, 'title')
-					@la_input($module, 'organization')
-					@la_input($module, 'contact')
-					@la_input($module, 'assigned_to')
-					@la_input($module, 'project')
-					@la_input($module, 'priority')
-					@la_input($module, 'status')
-					@la_input($module, 'hours')
-					@la_input($module, 'description')
-					@la_input($module, 'solution')
-					--}}
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'title')</div>
+						<div class="col-md-6">@la_input($module, 'organization')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'contact')</div>
+						<div class="col-md-6">@la_input($module, 'assigned_to')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'project')</div>
+						<div class="col-md-6">@la_input($module, 'priority')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'status')</div>
+						<div class="col-md-6">@la_input($module, 'hours')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'description')</div>
+						<div class="col-md-6">@la_input($module, 'solution')</div>
+					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
