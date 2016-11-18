@@ -108,36 +108,37 @@
 					</div>
 					<div class="panel-body">
 						<div class="row">
-							<div class="col-md-6">@la_display($module, 'name')</div>
-							<div class="col-md-6">@la_display($module, 'email')</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">@la_display($module, 'phone_primary')</div>
-							<div class="col-md-6">@la_display($module, 'phone_secondary')</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">@la_display($module, 'website')</div>
-							<div class="col-md-6">@la_display($module, 'type')</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">@la_display($module, 'assigned_to')</div>
-							<div class="col-md-6">@la_display($module, 'connect_since')</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">@la_display($module, 'address')</div>
-							<div class="col-md-6">@la_display($module, 'country')</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">@la_display($module, 'city')</div>
-							<div class="col-md-6">@la_display($module, 'postal_code')</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">@la_display($module, 'description')</div>
-							<div class="col-md-6">@la_display($module, 'profile_image')</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">@la_display($module, 'profile')</div>
-						</div>
+						<div class="col-md-6">@la_display($module, 'name')</div>
+						<div class="col-md-6">@la_display($module, 'email_primary')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_display($module, 'email_secondary')</div>
+						<div class="col-md-6">@la_display($module, 'phone_primary')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_display($module, 'phone_secondary')</div>
+						<div class="col-md-6">@la_display($module, 'website')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_display($module, 'type')</div>
+						<div class="col-md-6">@la_display($module, 'assigned_to')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_display($module, 'connect_since')</div>
+						<div class="col-md-6">@la_display($module, 'address')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_display($module, 'country')</div>
+						<div class="col-md-6">@la_display($module, 'city')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_display($module, 'postal_code')</div>
+						<div class="col-md-6">@la_display($module, 'description')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_display($module, 'profile_image')</div>
+						<div class="col-md-6">@la_display($module, 'profile')</div>
+					</div>
 					</div>
 				</div>
 			</div>

@@ -19,7 +19,8 @@ class CreateOrganizationsTable extends Migration
     {
         Module::generate("Organizations", 'organizations', 'name', 'fa-university', [
             ["name", "Name", "Name", true, "", 5, 250, true],
-            ["email", "Email", "Email", true, "", 0, 250, false],
+            ["email_primary", "Primary Email", "Email", true, "", 0, 250, false],
+            ["email_secondary", "Secondary Email", "Email", false, "", 0, 256, false],
             ["phone_primary", "Primary Phone", "Mobile", false, "", 10, 20, false],
             ["phone_secondary", "Secondary Phone", "Mobile", false, "", 10, 20, false],
             ["website", "Website", "URL", false, "http://", 0, 250, false],

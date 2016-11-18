@@ -32,32 +32,35 @@
 				{!! Form::model($organization, ['route' => [config('laraadmin.adminRoute') . '.organizations.update', $organization->id ], 'method'=>'PUT', 'id' => 'organization-edit-form']) !!}
 					<div class="row">
 						<div class="col-md-6">@la_input($module, 'name')</div>
-						<div class="col-md-6">@la_input($module, 'email')</div>
+						<div class="col-md-6">@la_input($module, 'email_primary')</div>
 					</div>
 					<div class="row">
+						<div class="col-md-6">@la_input($module, 'email_secondary')</div>
 						<div class="col-md-6">@la_input($module, 'phone_primary')</div>
+					</div>
+					<div class="row">
 						<div class="col-md-6">@la_input($module, 'phone_secondary')</div>
-					</div>
-					<div class="row">
 						<div class="col-md-6">@la_input($module, 'website')</div>
+					</div>
+					<div class="row">
 						<div class="col-md-6">@la_input($module, 'type')</div>
-					</div>
-					<div class="row">
 						<div class="col-md-6">@la_input($module, 'assigned_to')</div>
+					</div>
+					<div class="row">
 						<div class="col-md-6">@la_input($module, 'connect_since')</div>
-					</div>
-					<div class="row">
 						<div class="col-md-6">@la_input($module, 'address')</div>
+					</div>
+					<div class="row">
 						<div class="col-md-6">@la_input($module, 'country')</div>
-					</div>
-					<div class="row">
 						<div class="col-md-6">@la_input($module, 'city')</div>
-						<div class="col-md-6">@la_input($module, 'postal_code')</div>
 					</div>
 					<div class="row">
+						<div class="col-md-6">@la_input($module, 'postal_code')</div>
 						<div class="col-md-6">@la_input($module, 'description')</div>
-						<div class="col-md-2 col-md-offset-1">@la_input($module, 'profile_image')</div>
-						<div class="col-md-3">@la_input($module, 'profile')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'profile_image')</div>
+						<div class="col-md-6">@la_input($module, 'profile')</div>
 					</div>
                     <br>
 					<div class="form-group">

@@ -23,7 +23,7 @@ class OrganizationsController extends Controller
 {
 	public $show_action = true;
 	public $view_col = 'name';
-	public $listing_cols = ['id', 'profile_image', 'name', 'email', 'phone_primary', 'website', 'assigned_to', 'city'];
+	public $listing_cols = ['id', 'profile_image', 'name', 'email_primary', 'phone_primary', 'website', 'assigned_to', 'city'];
 	
 	public function __construct() {
 		// Field Access of Listing Columns
@@ -86,11 +86,11 @@ class OrganizationsController extends Controller
 			}
 			
 			$insert_id = Module::insert("Organizations", $request);
-
+			
 			// add to ElasticSearch index
 			$organization = Organization::find($insert_id);
 			$organization->addToIndex();
-			
+
 			return redirect()->route(config('laraadmin.adminRoute') . '.organizations.index');
 			
 		} else {
@@ -226,7 +226,7 @@ class OrganizationsController extends Controller
 		$fields_popup = ModuleFields::getModuleFields('Organizations');
 		
 		for($i=0; $i < count($data->data); $i++) {
-			for ($j=0; $j < count($this->listing_cols); $j++) { 
+			for ($j=0; $j < count($this->listing_cols); $j++) {
 				$col = $this->listing_cols[$j];
 				if($fields_popup[$col] != null && $fields_popup[$col]->field_type_str == "Image") {
 					if($data->data[$i][$j] != 0) {
