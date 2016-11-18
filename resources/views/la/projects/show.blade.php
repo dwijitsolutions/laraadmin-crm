@@ -107,18 +107,30 @@
 						<h4>General Info</h4>
 					</div>
 					<div class="panel-body">
-						@la_display($module, 'name')
-						@la_display($module, 'start_date')
-						@la_display($module, 'target_end_date')
-						@la_display($module, 'actual_end_date')
-						@la_display($module, 'assigned_to')
-						@la_display($module, 'status')
-						@la_display($module, 'type')
-						@la_display($module, 'organization')
-						@la_display($module, 'target_budget')
-						@la_display($module, 'project_url')
-						@la_display($module, 'priority')
-						@la_display($module, 'description')
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'name')</div>
+							<div class="col-md-6">@la_display($module, 'start_date')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'target_end_date')</div>
+							<div class="col-md-6">@la_display($module, 'actual_end_date')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'assigned_to')</div>
+							<div class="col-md-6">@la_display($module, 'status')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'type')</div>
+							<div class="col-md-6">@la_display($module, 'organization')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'target_budget')</div>
+							<div class="col-md-6">@la_display($module, 'project_url')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'priority')</div>
+							<div class="col-md-6">@la_display($module, 'description')</div>
+						</div>
 					</div>
 				</div>
 			</div>

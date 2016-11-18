@@ -107,22 +107,38 @@
 						<h4>General Info</h4>
 					</div>
 					<div class="panel-body">
-						@la_display($module, 'first_name')
-						@la_display($module, 'last_name')
-						@la_display($module, 'phone_primary')
-						@la_display($module, 'phone_secondary')
-						@la_display($module, 'email_primary')
-						@la_display($module, 'email_secondary')
-						@la_display($module, 'company')
-						@la_display($module, 'title')
-						@la_display($module, 'lead_source')
-						@la_display($module, 'industry')
-						@la_display($module, 'assigned_to')
-						@la_display($module, 'employee_count')
-						@la_display($module, 'address')
-						@la_display($module, 'city')
-						@la_display($module, 'country')
-						@la_display($module, 'description')
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'first_name')</div>
+							<div class="col-md-6">@la_display($module, 'last_name')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'phone_primary')</div>
+							<div class="col-md-6">@la_display($module, 'phone_secondary')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'email_primary')</div>
+							<div class="col-md-6">@la_display($module, 'email_secondary')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'company')</div>
+							<div class="col-md-6">@la_display($module, 'title')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'lead_source')</div>
+							<div class="col-md-6">@la_display($module, 'industry')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'assigned_to')</div>
+							<div class="col-md-6">@la_display($module, 'employee_count')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'address')</div>
+							<div class="col-md-6">@la_display($module, 'city')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'country')</div>
+							<div class="col-md-6">@la_display($module, 'description')</div>
+						</div>
 					</div>
 				</div>
 			</div>

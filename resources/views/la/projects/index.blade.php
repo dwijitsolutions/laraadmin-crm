@@ -47,7 +47,7 @@
 
 @la_access("Projects", "create")
 <div class="modal fade" id="AddModal" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -56,22 +56,30 @@
 			{!! Form::open(['action' => 'LA\ProjectsController@store', 'id' => 'project-add-form']) !!}
 			<div class="modal-body">
 				<div class="box-body">
-                    @la_form($module)
-					
-					{{--
-					@la_input($module, 'name')
-					@la_input($module, 'start_date')
-					@la_input($module, 'target_end_date')
-					@la_input($module, 'actual_end_date')
-					@la_input($module, 'assigned_to')
-					@la_input($module, 'status')
-					@la_input($module, 'type')
-					@la_input($module, 'organization')
-					@la_input($module, 'target_budget')
-					@la_input($module, 'project_url')
-					@la_input($module, 'priority')
-					@la_input($module, 'description')
-					--}}
+                     <div class="row">
+						<div class="col-md-6">@la_input($module, 'name')</div>
+						<div class="col-md-6">@la_input($module, 'start_date')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'target_end_date')</div>
+						<div class="col-md-6">@la_input($module, 'actual_end_date')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'assigned_to')</div>
+						<div class="col-md-6">@la_input($module, 'status')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'type')</div>
+						<div class="col-md-6">@la_input($module, 'organization')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'target_budget')</div>
+						<div class="col-md-6">@la_input($module, 'project_url')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'priority')</div>
+						<div class="col-md-6">@la_input($module, 'description')</div>
+					</div>
 				</div>
 			</div>
 			<div class="modal-footer">

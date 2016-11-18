@@ -107,26 +107,46 @@
 						<h4>General Info</h4>
 					</div>
 					<div class="panel-body">
-						@la_display($module, 'designation')
-						@la_display($module, 'first_name')
-						@la_display($module, 'last_name')
-						@la_display($module, 'title')
-						@la_display($module, 'organization')
-						@la_display($module, 'phone_primary')
-						@la_display($module, 'phone_secondary')
-						@la_display($module, 'home_phone')
-						@la_display($module, 'lead_source')
-						@la_display($module, 'department')
-						@la_display($module, 'email')
-						@la_display($module, 'email2')
-						@la_display($module, 'dob')
-						@la_display($module, 'assistant')
-						@la_display($module, 'assistant_phone')
-						@la_display($module, 'assigned_to')
-						@la_display($module, 'address')
-						@la_display($module, 'city')
-						@la_display($module, 'description')
-						@la_display($module, 'profile_picture')
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'designation')</div>
+							<div class="col-md-6">@la_display($module, 'first_name')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'last_name')</div>
+							<div class="col-md-6">@la_display($module, 'title')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'organization')</div>
+							<div class="col-md-6">@la_display($module, 'phone_primary')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'phone_secondary')</div>
+							<div class="col-md-6">@la_display($module, 'home_phone')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'lead_source')</div>
+							<div class="col-md-6">@la_display($module, 'department')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'email')</div>
+							<div class="col-md-6">@la_display($module, 'email2')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'dob')</div>
+							<div class="col-md-6">@la_display($module, 'assistant')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'assistant_phone')</div>
+							<div class="col-md-6">@la_display($module, 'assigned_to')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'address')</div>
+							<div class="col-md-6">@la_display($module, 'city')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'description')</div>
+							<div class="col-md-6">@la_display($module, 'profile_picture')</div>
+						</div>
 					</div>
 				</div>
 			</div>

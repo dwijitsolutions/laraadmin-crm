@@ -18,17 +18,17 @@ class CreateContactsTable extends Migration
     public function up()
     {
         Module::generate("Contacts", 'contacts', 'first_name', 'fa-user', [
-            ["designation", "Designation", "Dropdown", true, "", 0, 5, false, ["None","Mr.","Ms.","Mrs.","Dr.","Prof."]],
+            ["designation", "Designation", "Dropdown", false, "", 0, 5, true, ["None","Mr.","Ms.","Mrs.","Dr.","Prof."]],
             ["first_name", "First Name", "Name", false, "", 0, 256, false],
             ["last_name", "Last Name", "Name", false, "", 0, 256, true],
             ["title", "Title", "String", false, "", 0, 256, false],
             ["organization", "Organization Name  ", "Dropdown", false, "", 0, 0, false, "@organizations"],
             ["phone_primary", "Primary Phone", "Mobile", false, "", 10, 20, true],
-            ["phone_secondary", "Secondary Phone", "Mobile", false, "", 10, 20, false],
-            ["home_phone", "Home Phone", "Mobile", false, "", 10, 20, false],
+            ["email", "Primary Email", "Email", true, "", 0, 250, false],
             ["lead_source", "Lead Source", "Dropdown", false, "", 0, 0, false, "@industry_types"],
             ["department", "Department", "String", false, "", 0, 256, false],
-            ["email", "Primary Email", "Email", false, "", 0, 256, false],
+            ["phone_secondary", "Secondary Phone", "Mobile", false, "", 10, 20, false],
+            ["home_phone", "Home Phone", "Mobile", false, "", 10, 20, false],
             ["email2", "Secondary Email", "Email", false, "", 0, 256, false],
             ["dob", "Date of Birth", "Date", false, "", 0, 0, false],
             ["assistant", "Assistant", "String", false, "", 0, 256, false],

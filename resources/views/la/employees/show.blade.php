@@ -74,20 +74,34 @@
 						<h4>General Info</h4>
 					</div>
 					<div class="panel-body">
-						@la_display($module, 'name')
-						@la_display($module, 'designation')
-						@la_display($module, 'gender')
-						@la_display($module, 'phone_primary')
-						@la_display($module, 'phone_secondary')
-						@la_display($module, 'email')
-						@la_display($module, 'dept')
-						@la_display($module, 'city')
-						@la_display($module, 'address')
-						@la_display($module, 'about')
-						@la_display($module, 'date_birth')
-						@la_display($module, 'date_hire')
-						@la_display($module, 'date_left')
-						@la_display($module, 'salary_cur')
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'name')</div>
+							<div class="col-md-6">@la_display($module, 'designation')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'gender')</div>
+							<div class="col-md-6">@la_display($module, 'phone_primary')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'phone_secondary')</div>
+							<div class="col-md-6">@la_display($module, 'email')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'dept')</div>
+							<div class="col-md-6">@la_display($module, 'city')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'address')</div>
+							<div class="col-md-6">@la_display($module, 'about')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'date_birth')</div>
+							<div class="col-md-6">@la_display($module, 'date_hire')</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">@la_display($module, 'date_left')</div>
+							<div class="col-md-6">@la_display($module, 'salary_cur')</div>
+						</div>
 					</div>
 				</div>
 			</div>

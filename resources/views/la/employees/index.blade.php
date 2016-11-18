@@ -47,7 +47,7 @@
 
 @la_access("Employees", "create")
 <div class="modal fade" id="AddModal" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -56,24 +56,35 @@
 			{!! Form::open(['action' => 'LA\EmployeesController@store', 'id' => 'employee-add-form']) !!}
 			<div class="modal-body">
 				<div class="box-body">
-                    @la_form($module)
+                    <div class="row">
+						<div class="col-md-6">@la_input($module, 'name')</div>
+						<div class="col-md-6">@la_input($module, 'designation')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'gender')</div>
+						<div class="col-md-6">@la_input($module, 'phone_primary')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'phone_secondary')</div>
+						<div class="col-md-6">@la_input($module, 'email')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'dept')</div>
+						<div class="col-md-6">@la_input($module, 'city')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'address')</div>
+						<div class="col-md-6">@la_input($module, 'about')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'date_birth')</div>
+						<div class="col-md-6">@la_input($module, 'date_hire')</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">@la_input($module, 'date_left')</div>
+						<div class="col-md-6">@la_input($module, 'salary_cur')</div>
+					</div>
 					
-					{{--
-					@la_input($module, 'name')
-					@la_input($module, 'designation')
-					@la_input($module, 'gender')
-					@la_input($module, 'phone_primary')
-					@la_input($module, 'phone_secondary')
-					@la_input($module, 'email')
-					@la_input($module, 'dept')
-					@la_input($module, 'city')
-					@la_input($module, 'address')
-					@la_input($module, 'about')
-					@la_input($module, 'date_birth')
-					@la_input($module, 'date_hire')
-					@la_input($module, 'date_left')
-					@la_input($module, 'salary_cur')
-					--}}
 					<div class="form-group">
 						<label for="role">Role* :</label>
 						<select class="form-control" required="1" data-placeholder="Select Role" rel="select2" name="role">
