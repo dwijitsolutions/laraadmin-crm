@@ -62,6 +62,11 @@
 		<li class="active"><a role="tab" data-toggle="tab" class="active" href="#tab-info" data-target="#tab-info"><i class="fa fa-bars"></i> General Info</a></li>
 		<li class=""><a role="tab" data-toggle="tab" href="#tab-timeline" data-target="#tab-timeline"><i class="fa fa-clock-o"></i> Timeline</a></li>
 		<li class=""><a role="tab" data-toggle="tab" href="#tab-organizations" data-target="#tab-organizations"><i class="fa fa-clock-o"></i> Organizations</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-contacts" data-target="#tab-contacts"><i class="fa fa-clock-o"></i> Contacts</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-leads" data-target="#tab-leads"><i class="fa fa-clock-o"></i> Leads</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-projects" data-target="#tab-projects"><i class="fa fa-clock-o"></i> Projects</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-tickets" data-target="#tab-tickets"><i class="fa fa-clock-o"></i> Tickets</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-opportunities" data-target="#tab-opportunities"><i class="fa fa-clock-o"></i> Opportunities</a></li>
 		@if($employee->id == Auth::user()->id || Entrust::hasRole("SUPER_ADMIN"))
 			<li class=""><a role="tab" data-toggle="tab" href="#tab-account-settings" data-target="#tab-account-settings"><i class="fa fa-key"></i> Account settings</a></li>
 		@endif
@@ -231,6 +236,156 @@
 				</div>
 			</div>
 		</div>
+
+		<div role="tabpanel" class="tab-pane fade" id="tab-contacts">
+			<div class="tab-content">
+				<div class="panel">
+					<div class="panel-default panel-heading">
+						<h4>Contacts assigned to {{ $employee->name }}</h4>
+					</div>
+					<div class="panel-body p20">
+						<table id="dt-employee-contacts" class="table table-bordered">
+							<thead>
+							<tr class="success">
+								<th>Id</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Title</th>
+								<th>Organization Name</th>
+								<th>Primary Email</th>
+								<th>Primary Phone</th>
+								<th>Assigned To</th>
+								<th>Actions</th>
+							</tr>
+							</thead>
+							<tbody>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div role="tabpanel" class="tab-pane fade" id="tab-leads">
+			<div class="tab-content">
+				<div class="panel">
+					<div class="panel-default panel-heading">
+						<h4>Leads assigned to {{ $employee->name }}</h4>
+					</div>
+					<div class="panel-body p20">
+						<table id="dt-employee-leads" class="table table-bordered">
+							<thead>
+							<tr class="success">
+								<th>Id</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Comany</th>
+								<th>Primary Phone</th>
+								<th>Primary Email</th>
+								<th>Assigned to</th>
+								<th>Actions</th>
+							</tr>
+							</thead>
+							<tbody>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div role="tabpanel" class="tab-pane fade" id="tab-projects">
+			<div class="tab-content">
+				<div class="panel">
+					<div class="panel-default panel-heading">
+						<h4>Projects assigned to {{ $employee->name }}</h4>
+					</div>
+					<div class="panel-body p20">
+						<table id="dt-employee-projects" class="table table-bordered">
+							<thead>
+							<tr class="success">
+								<th>Id</th>
+								<th>Project Name</th>
+								<th>Start Date</th>
+								<th>Target End Date</th>
+								<th>Actual End Date</th>
+								<th>Target Budget</th>
+								<th>Status</th>
+								<th>Assigned To</th>
+								<th>Actions</th>
+							</tr>
+							</thead>
+							<tbody>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div role="tabpanel" class="tab-pane fade" id="tab-tickets">
+			<div class="tab-content">
+				<div class="panel">
+					<div class="panel-default panel-heading">
+						<h4>tickets assigned to {{ $employee->name }}</h4>
+					</div>
+					<div class="panel-body p20">
+						<table id="dt-employee-tickets" class="table table-bordered" style="width:100%;">
+							<thead>
+							<tr class="success">
+								<th>Id</th>
+								<th>Title</th>
+								<th>Project</th>
+								<th>Organization</th>
+								<th>Status</th>
+								<th>Priority</th>
+								<th>Assigned to</th>
+								<th>Contact</th>
+								<th>Actions</th>
+							</tr>
+							</thead>
+							<tbody>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div role="tabpanel" class="tab-pane fade" id="tab-opportunities">
+			<div class="tab-content">
+				<div class="panel">
+					<div class="panel-default panel-heading">
+						<h4>Opportunities assigned to {{ $employee->name }}</h4>
+					</div>
+					<div class="panel-body p20">
+						<table id="dt-employee-opportunities" class="table table-bordered">
+							<thead>
+							<tr class="success">
+								<th>Id</th>
+								<th>Name</th>
+								<th>Organization</th>
+								<th>Sales stage</th>
+								<th>Lead Source</th>
+								<th>Expected close date</th>
+								<th>Amount</th>
+								<th>Assigned to</th>
+								<th>Contact</th>
+								<th>Actions</th>
+							</tr>
+							</thead>
+							<tbody>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 		
 		@if($employee->id == Auth::user()->id || Entrust::hasRole("SUPER_ADMIN"))
 		<div role="tabpanel" class="tab-pane fade" id="tab-account-settings">
@@ -300,6 +455,96 @@ $(function () {
 		serverSide: true,
 		ajax: {
 			"url": "{{ url(config('laraadmin.adminRoute') . '/organization_dt_ajax') }}",
+			"data": function ( data_custom ) {
+				data_custom.filter_column = "assigned_to";
+				data_custom.filter_column_value = "{{ $employee->id }}";
+			}
+		},
+		language: {
+			lengthMenu: "_MENU_",
+			search: "_INPUT_",
+			searchPlaceholder: "Search"
+		},
+		columnDefs: [ { orderable: false, targets: [-1] }]
+	});
+
+	var dt_employee_contacts = $("#dt-employee-contacts").DataTable({
+		processing: true,
+		serverSide: true,
+		ajax: {
+			"url": "{{ url(config('laraadmin.adminRoute') . '/contact_dt_ajax') }}",
+			"data": function ( data_custom ) {
+				data_custom.filter_column = "assigned_to";
+				data_custom.filter_column_value = "{{ $employee->id }}";
+			}
+		},
+		language: {
+			lengthMenu: "_MENU_",
+			search: "_INPUT_",
+			searchPlaceholder: "Search"
+		},
+		columnDefs: [ { orderable: false, targets: [-1] }]
+	});
+
+	var dt_employee_leads = $("#dt-employee-leads").DataTable({
+		processing: true,
+		serverSide: true,
+		ajax: {
+			"url": "{{ url(config('laraadmin.adminRoute') . '/lead_dt_ajax') }}",
+			"data": function ( data_custom ) {
+				data_custom.filter_column = "assigned_to";
+				data_custom.filter_column_value = "{{ $employee->id }}";
+			}
+		},
+		language: {
+			lengthMenu: "_MENU_",
+			search: "_INPUT_",
+			searchPlaceholder: "Search"
+		},
+		columnDefs: [ { orderable: false, targets: [-1] }]
+	});
+
+	var dt_employee_projects = $("#dt-employee-projects").DataTable({
+		processing: true,
+		serverSide: true,
+		ajax: {
+			"url": "{{ url(config('laraadmin.adminRoute') . '/project_dt_ajax') }}",
+			"data": function ( data_custom ) {
+				data_custom.filter_column = "assigned_to";
+				data_custom.filter_column_value = "{{ $employee->id }}";
+			}
+		},
+		language: {
+			lengthMenu: "_MENU_",
+			search: "_INPUT_",
+			searchPlaceholder: "Search"
+		},
+		columnDefs: [ { orderable: false, targets: [-1] }]
+	});
+
+	var dt_employee_tickets = $("#dt-employee-tickets").DataTable({
+		processing: true,
+		serverSide: true,
+		ajax: {
+			"url": "{{ url(config('laraadmin.adminRoute') . '/ticket_dt_ajax') }}",
+			"data": function ( data_custom ) {
+				data_custom.filter_column = "assigned_to";
+				data_custom.filter_column_value = "{{ $employee->id }}";
+			}
+		},
+		language: {
+			lengthMenu: "_MENU_",
+			search: "_INPUT_",
+			searchPlaceholder: "Search"
+		},
+		columnDefs: [ { orderable: false, targets: [-1] }]
+	});
+
+	var dt_employee_opportunities = $("#dt-employee-opportunities").DataTable({
+		processing: true,
+		serverSide: true,
+		ajax: {
+			"url": "{{ url(config('laraadmin.adminRoute') . '/opportunity_dt_ajax') }}",
 			"data": function ( data_custom ) {
 				data_custom.filter_column = "assigned_to";
 				data_custom.filter_column_value = "{{ $employee->id }}";

@@ -207,9 +207,13 @@ class TicketsController extends Controller
 	 *
 	 * @return
 	 */
-	public function dtajax()
+	public function dtajax(Request $request)
 	{
-		$values = DB::table('tickets')->select($this->listing_cols)->whereNull('deleted_at');
+		if(isset($request->filter_column)) {
+			$values = DB::table('tickets')->select($this->listing_cols)->whereNull('deleted_at')->where($request->filter_column, $request->filter_column_value);
+		} else {
+			$values = DB::table('tickets')->select($this->listing_cols)->whereNull('deleted_at');
+		}
 		$out = Datatables::of($values)->make();
 		$data = $out->getData();
 
