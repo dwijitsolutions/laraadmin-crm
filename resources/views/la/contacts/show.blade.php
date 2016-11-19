@@ -97,6 +97,7 @@
 		<li class=""><a href="{{ url(config('laraadmin.adminRoute') . '/contacts') }}" data-toggle="tooltip" data-placement="right" title="Back to Contacts"><i class="fa fa-chevron-left"></i></a></li>
 		<li class="active"><a role="tab" data-toggle="tab" class="active" href="#tab-general-info" data-target="#tab-info"><i class="fa fa-bars"></i> General Info</a></li>
 		<li class=""><a role="tab" data-toggle="tab" href="#tab-timeline" data-target="#tab-timeline"><i class="fa fa-clock-o"></i> Timeline</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-opportunities" data-target="#tab-opportunities"><i class="fa {{ Dwij\Laraadmin\Models\Module::get('Opportunities')->fa_icon }}"></i> Opportunities</a></li>
 	</ul>
 
 	<div class="tab-content">
@@ -246,8 +247,67 @@
 			<!--<div class="text-center p30"><i class="fa fa-list-alt" style="font-size: 100px;"></i> <br> No posts to show</div>-->
 		</div>
 		
+		<div role="tabpanel" class="tab-pane fade" id="tab-opportunities">
+			<div class="tab-content">
+				<div class="panel">
+					<div class="panel-default panel-heading">
+						<h4>Opportunities assigned to {{ $contact->name }}</h4>
+					</div>
+					<div class="panel-body p20">
+						<table id="dt-contact-opportunities" class="table table-bordered" style="width: 100%;">
+							<thead>
+							<tr class="success">
+								<th>Id</th>
+								<th>Name</th>
+								<th>Organization</th>
+								<th>Sales stage</th>
+								<th>Lead Source</th>
+								<th>Expected close date</th>
+								<th>Amount</th>
+								<th>Assigned to</th>
+								<th>Contact</th>
+								<th>Actions</th>
+							</tr>
+							</thead>
+							<tbody>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	</div>
 	</div>
 </div>
 @endsection
+
+@push('styles')
+<link rel="stylesheet" type="text/css" href="{{ asset('la-assets/plugins/datatables/datatables.min.css') }}"/>
+@endpush
+
+@push('scripts')
+<script src="{{ asset('la-assets/plugins/datatables/datatables.min.js') }}"></script>
+<script>
+$(function () {
+	var dt_contact_opportunities = $("#dt-contact-opportunities").DataTable({
+		processing: true,
+		serverSide: true,
+		ajax: {
+			"url": "{{ url(config('laraadmin.adminRoute') . '/opportunity_dt_ajax') }}",
+			"data": function ( data_custom ) {
+				data_custom.filter_column = "contact";
+				data_custom.filter_column_value = "{{ $contact->id }}";
+			}
+		},
+		language: {
+			lengthMenu: "_MENU_",
+			search: "_INPUT_",
+			searchPlaceholder: "Search"
+		},
+		columnDefs: [ { orderable: false, targets: [-1] }]
+	});
+});
+</script>
+@endpush

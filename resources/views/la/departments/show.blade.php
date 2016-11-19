@@ -97,8 +97,8 @@
 		<li class=""><a href="{{ url(config('laraadmin.adminRoute') . '/departments') }}" data-toggle="tooltip" data-placement="right" title="Back to Departments"><i class="fa fa-chevron-left"></i></a></li>
 		<li class="active"><a role="tab" data-toggle="tab" class="active" href="#tab-general-info" data-target="#tab-info"><i class="fa fa-bars"></i> General Info</a></li>
 		<li class=""><a role="tab" data-toggle="tab" href="#tab-timeline" data-target="#tab-timeline"><i class="fa fa-clock-o"></i> Timeline</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-employees" data-target="#tab-employees"><i class="fa fa-group"></i> Employees</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-roles" data-target="#tab-roles"><i class="fa fa-user-plus"></i> Roles</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-employees" data-target="#tab-employees"><i class="fa {{ Dwij\Laraadmin\Models\Module::get('Employees')->fa_icon }}"></i> Employees</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-roles" data-target="#tab-roles"><i class="fa {{ Dwij\Laraadmin\Models\Module::get('Roles')->fa_icon }}"></i> Roles</a></li>
 	</ul>
 
 	<div class="tab-content">
@@ -279,13 +279,13 @@
 <script src="{{ asset('la-assets/plugins/datatables/datatables.min.js') }}"></script>
 <script>
 $(function () {
-	var dt_employee_organizations = $("#dt-department-employees").DataTable({
+	var dt_department_employees = $("#dt-department-employees").DataTable({
 		processing: true,
 		serverSide: true,
 		ajax: {
 			"url": "{{ url(config('laraadmin.adminRoute') . '/employee_dt_ajax') }}",
 			"data": function ( data_custom ) {
-				data_custom.filter_column = "assigned_to";
+				data_custom.filter_column = "dept";
 				data_custom.filter_column_value = "{{ $department->id }}";
 			}
 		},
@@ -297,13 +297,13 @@ $(function () {
 		columnDefs: [ { orderable: false, targets: [-1] }]
 	});
 
-	var dt_employee_organizations = $("#dt-department-roles").DataTable({
+	var dt_department_roles = $("#dt-department-roles").DataTable({
 		processing: true,
 		serverSide: true,
 		ajax: {
 			"url": "{{ url(config('laraadmin.adminRoute') . '/role_dt_ajax') }}",
 			"data": function ( data_custom ) {
-				data_custom.filter_column = "assigned_to";
+				data_custom.filter_column = "dept";
 				data_custom.filter_column_value = "{{ $department->id }}";
 			}
 		},

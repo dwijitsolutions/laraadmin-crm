@@ -234,7 +234,7 @@ class RolesController extends Controller
 	 *
 	 * @return
 	 */
-	public function dtajax()
+	public function dtajax(Request $request)
 	{
 		if(isset($request->filter_column)) {
 			$values = DB::table('roles')->select($this->listing_cols)->whereNull('deleted_at')->where($request->filter_column, $request->filter_column_value);
