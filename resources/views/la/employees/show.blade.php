@@ -29,6 +29,7 @@
 			<div class="dats1"><i class="fa fa-clock-o"></i> Joined on {{ date("M d, Y", strtotime($employee->date_hire)) }}</div>
 		</div>
 		<div class="col-md-4">
+		<!--
 			<div class="teamview">
 				<a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user1-128x128.jpg') }}" alt=""><i class="status-online"></i></a>
 				<a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user2-160x160.jpg') }}" alt=""></a>
@@ -42,6 +43,7 @@
 				<a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user6-128x128.jpg') }}" alt=""><i class="status-online"></i></a>
 				<a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user7-128x128.jpg') }}" alt=""></a>
 			</div>
+		-->
 			
 		</div>
 		<div class="col-md-1 actions">
@@ -61,12 +63,12 @@
 		<li class=""><a href="{{ url(config('laraadmin.adminRoute') . '/employees') }}" data-toggle="tooltip" data-placement="right" title="Back to Employees"><i class="fa fa-chevron-left"></i></a></li>
 		<li class="active"><a role="tab" data-toggle="tab" class="active" href="#tab-info" data-target="#tab-info"><i class="fa fa-bars"></i> General Info</a></li>
 		<li class=""><a role="tab" data-toggle="tab" href="#tab-timeline" data-target="#tab-timeline"><i class="fa fa-clock-o"></i> Timeline</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-organizations" data-target="#tab-organizations"><i class="fa fa-clock-o"></i> Organizations</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-contacts" data-target="#tab-contacts"><i class="fa fa-clock-o"></i> Contacts</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-leads" data-target="#tab-leads"><i class="fa fa-clock-o"></i> Leads</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-projects" data-target="#tab-projects"><i class="fa fa-clock-o"></i> Projects</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-tickets" data-target="#tab-tickets"><i class="fa fa-clock-o"></i> Tickets</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-opportunities" data-target="#tab-opportunities"><i class="fa fa-clock-o"></i> Opportunities</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-organizations" data-target="#tab-organizations"><i class="fa {{ Dwij\Laraadmin\Models\Module::get('Tickets')->fa_icon }}"></i> Organizations</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-contacts" data-target="#tab-contacts"><i class="fa {{ Dwij\Laraadmin\Models\Module::get('Contacts')->fa_icon }}"></i> Contacts</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-leads" data-target="#tab-leads"><i class="fa {{ Dwij\Laraadmin\Models\Module::get('Leads')->fa_icon }}"></i> Leads</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-projects" data-target="#tab-projects"><i class="fa {{ Dwij\Laraadmin\Models\Module::get('Projects')->fa_icon }}"></i> Projects</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-tickets" data-target="#tab-tickets"><i class="fa {{ Dwij\Laraadmin\Models\Module::get('Tickets')->fa_icon }}"></i> Tickets</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-opportunities" data-target="#tab-opportunities"><i class="fa {{ Dwij\Laraadmin\Models\Module::get('Opportunities')->fa_icon }}"></i> Opportunities</a></li>
 		@if($employee->id == Auth::user()->id || Entrust::hasRole("SUPER_ADMIN"))
 			<li class=""><a role="tab" data-toggle="tab" href="#tab-account-settings" data-target="#tab-account-settings"><i class="fa fa-key"></i> Account settings</a></li>
 		@endif
@@ -214,7 +216,7 @@
 						<h4>Organizations assigned to {{ $employee->name }}</h4>
 					</div>
 					<div class="panel-body p20">
-						<table id="dt-employee-organizations" class="table table-bordered">
+						<table id="dt-employee-organizations" class="table table-bordered" style="width:100%;">
 							<thead>
 							<tr class="success">
 								<th>Id</th>
@@ -244,7 +246,7 @@
 						<h4>Contacts assigned to {{ $employee->name }}</h4>
 					</div>
 					<div class="panel-body p20">
-						<table id="dt-employee-contacts" class="table table-bordered">
+						<table id="dt-employee-contacts" class="table table-bordered" style="width:100%;">
 							<thead>
 							<tr class="success">
 								<th>Id</th>
@@ -274,7 +276,7 @@
 						<h4>Leads assigned to {{ $employee->name }}</h4>
 					</div>
 					<div class="panel-body p20">
-						<table id="dt-employee-leads" class="table table-bordered">
+						<table id="dt-employee-leads" class="table table-bordered" style="width:100%;">
 							<thead>
 							<tr class="success">
 								<th>Id</th>
@@ -303,7 +305,7 @@
 						<h4>Projects assigned to {{ $employee->name }}</h4>
 					</div>
 					<div class="panel-body p20">
-						<table id="dt-employee-projects" class="table table-bordered">
+						<table id="dt-employee-projects" class="table table-bordered" style="width:100%;">
 							<thead>
 							<tr class="success">
 								<th>Id</th>
@@ -363,7 +365,7 @@
 						<h4>Opportunities assigned to {{ $employee->name }}</h4>
 					</div>
 					<div class="panel-body p20">
-						<table id="dt-employee-opportunities" class="table table-bordered">
+						<table id="dt-employee-opportunities" class="table table-bordered" style="width:100%;">
 							<thead>
 							<tr class="success">
 								<th>Id</th>
