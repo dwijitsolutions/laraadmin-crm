@@ -96,7 +96,7 @@
 	<ul data-toggle="ajax-tab" class="nav nav-tabs profile" role="tablist">
 		<li class=""><a href="{{ url(config('laraadmin.adminRoute') . '/projects') }}" data-toggle="tooltip" data-placement="right" title="Back to Projects"><i class="fa fa-chevron-left"></i></a></li>
 		<li class="active"><a role="tab" data-toggle="tab" class="active" href="#tab-general-info" data-target="#tab-info"><i class="fa fa-bars"></i> General Info</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-tickets" data-target="#tab-tickets"><i class="fa {{ Dwij\Laraadmin\Models\Module::get('Tickets')->fa_icon }}"></i> Tickets</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-tickets" data-target="#tab-tickets"><i class="fa {{ Module::get('Tickets')->fa_icon }}"></i> Tickets</a></li>
 		<li class=""><a role="tab" data-toggle="tab" href="#tab-timeline" data-target="#tab-timeline"><i class="fa fa-clock-o"></i> Timeline</a></li>
 	</ul>
 
@@ -240,17 +240,15 @@
 					<div class="panel-body p20">
 						<table id="dt-tickets-project" class="table table-bordered" style="width:100%;">
 							<thead>
-							<tr class="success">
-								<th>Id</th>
-								<th>Title</th>
-								<th>Project</th>
-								<th>Organization</th>
-								<th>Status</th>
-								<th>Priority</th>
-								<th>Assigned to</th>
-								<th>Contact</th>
-								<th>Actions</th>
-							</tr>
+								<?php
+								$listing_cols = Module::getListingColumns('Tickets', true);
+								?>
+								<tr class="success">
+									@foreach( $listing_cols as $col )
+										<th>{{ $col['label'] }}</th>
+									@endforeach
+									<th>Actions</th>
+								</tr>
 							</thead>
 							<tbody>
 								

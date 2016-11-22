@@ -245,15 +245,15 @@ class EmployeesController extends Controller
 	 *
 	 * @return
 	 */
-	public function dtajax()
+	public function dtajax(Request $request)
 	{
 		$module = Module::get('Employees');
 		$listing_cols = Module::getListingColumns('Employees');
 		
 		if(isset($request->filter_column)) {
-			$values = DB::table('employees')->select($this->listing_cols)->whereNull('deleted_at')->where($request->filter_column, $request->filter_column_value);
+			$values = DB::table('employees')->select($listing_cols)->whereNull('deleted_at')->where($request->filter_column, $request->filter_column_value);
 		} else {
-			$values = DB::table('employees')->select($this->listing_cols)->whereNull('deleted_at');
+			$values = DB::table('employees')->select($listing_cols)->whereNull('deleted_at');
 		}
 		$out = Datatables::of($values)->make();
 		$data = $out->getData();

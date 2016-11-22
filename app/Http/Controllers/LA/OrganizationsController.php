@@ -203,15 +203,15 @@ class OrganizationsController extends Controller
 	 *
 	 * @return
 	 */
-	public function dtajax()
+	public function dtajax(Request $request)
 	{
 		$module = Module::get('Organizations');
 		$listing_cols = Module::getListingColumns('Organizations');
 
 		if(isset($request->filter_column)) {
-			$values = DB::table('organizations')->select($this->listing_cols)->whereNull('deleted_at')->where($request->filter_column, $request->filter_column_value);
+			$values = DB::table('organizations')->select($listing_cols)->whereNull('deleted_at')->where($request->filter_column, $request->filter_column_value);
 		} else {
-			$values = DB::table('organizations')->select($this->listing_cols)->whereNull('deleted_at');
+			$values = DB::table('organizations')->select($listing_cols)->whereNull('deleted_at');
 		}
 		$out = Datatables::of($values)->make();
 		$data = $out->getData();

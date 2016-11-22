@@ -99,8 +99,9 @@ use Dwij\Laraadmin\Models\Module;
 							<th>Min</th>
 							<th>Max</th>
 							<th>Required</th>
+							<th>Listing</th>
 							<th style="max-width:300px;">Values</th>
-							<th><i class="fa fa-cogs"></i></th>
+							<th style="min-width:60px;"><i class="fa fa-cogs"></i></th>
 						</tr>
 						</thead>
 						<tbody>														
@@ -116,8 +117,9 @@ use Dwij\Laraadmin\Models\Module;
 									<td>{{ $field['minlength'] }}</td>
 									<td>{{ $field['maxlength'] }}</td>
 									<td>@if($field['required']) <span class="text-danger">True</span>@endif </td>
-									<td><?php echo LAHelper::parseValues($field['popup_vals']) ?></td>
-									<td>
+									<td>@if($field['listing_col']) <span class="text-danger">True</span>@endif </td>
+									<td style="max-width:300px;"><?php echo LAHelper::parseValues($field['popup_vals']) ?></td>
+									<td style="min-width:60px;">
 										<a href="{{ url(config('laraadmin.adminRoute') . '/module_fields/'.$field['id'].'/edit') }}" class="btn btn-edit-field btn-warning btn-xs" style="display:inline;padding:2px 5px 3px 5px;" id="edit_{{ $field['colname'] }}"><i class="fa fa-edit"></i></a>
 										<a href="{{ url(config('laraadmin.adminRoute') . '/module_fields/'.$field['id'].'/delete') }}" class="btn btn-edit-field btn-danger btn-xs" style="display:inline;padding:2px 5px 3px 5px;" id="delete_{{ $field['colname'] }}"><i class="fa fa-trash"></i></a>
 										@if($field['colname'] != $module->view_col)

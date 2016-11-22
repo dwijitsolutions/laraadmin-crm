@@ -22,20 +22,6 @@ use App\Models\Project;
 class ProjectsController extends Controller
 {
 	public $show_action = true;
-	public $view_col = 'name';
-	public $listing_cols = ['id', 'name', 'start_date', 'target_end_date', 'actual_end_date', 'target_budget',  'status', 'assigned_to'];
-	
-	public function __construct() {
-		// Field Access of Listing Columns
-		if(\Dwij\Laraadmin\Helpers\LAHelper::laravel_ver() == 5.3) {
-			$this->middleware(function ($request, $next) {
-				$this->listing_cols = ModuleFields::listingColumnAccessScan('Projects', $this->listing_cols);
-				return $next($request);
-			});
-		} else {
-			$this->listing_cols = ModuleFields::listingColumnAccessScan('Projects', $this->listing_cols);
-		}
-	}
 	
 	/**
 	 * Display a listing of the Projects.
@@ -49,7 +35,7 @@ class ProjectsController extends Controller
 		if(Module::hasAccess($module->id)) {
 			return View('la.projects.index', [
 				'show_actions' => $this->show_action,
-				'listing_cols' => $this->listing_cols,
+				'listing_cols' => Module::getListingColumns('Projects'),
 				'module' => $module
 			]);
 		} else {
@@ -111,7 +97,7 @@ class ProjectsController extends Controller
 				
 				return view('la.projects.show', [
 					'module' => $module,
-					'view_col' => $this->view_col,
+					'view_col' => $module->view_col,
 					'no_header' => true,
 					'no_padding' => "no-padding"
 				])->with('project', $project);
@@ -143,7 +129,7 @@ class ProjectsController extends Controller
 				
 				return view('la.projects.edit', [
 					'module' => $module,
-					'view_col' => $this->view_col,
+					'view_col' => $module->view_col,
 				])->with('project', $project);
 			} else {
 				return view('errors.404', [
@@ -209,10 +195,13 @@ class ProjectsController extends Controller
 	 */
 	public function dtajax(Request $request)
 	{
+		$module = Module::get('Projects');
+		$listing_cols = Module::getListingColumns('Projects');
+		
 		if(isset($request->filter_column)) {
-			$values = DB::table('projects')->select($this->listing_cols)->whereNull('deleted_at')->where($request->filter_column, $request->filter_column_value);
+			$values = DB::table('projects')->select($listing_cols)->whereNull('deleted_at')->where($request->filter_column, $request->filter_column_value);
 		} else {
-			$values = DB::table('projects')->select($this->listing_cols)->whereNull('deleted_at');
+			$values = DB::table('projects')->select($listing_cols)->whereNull('deleted_at');
 		}
 		$out = Datatables::of($values)->make();
 		$data = $out->getData();
@@ -220,12 +209,12 @@ class ProjectsController extends Controller
 		$fields_popup = ModuleFields::getModuleFields('Projects');
 		
 		for($i=0; $i < count($data->data); $i++) {
-			for ($j=0; $j < count($this->listing_cols); $j++) { 
-				$col = $this->listing_cols[$j];
+			for ($j=0; $j < count($listing_cols); $j++) { 
+				$col = $listing_cols[$j];
 				if($fields_popup[$col] != null && starts_with($fields_popup[$col]->popup_vals, "@")) {
 					$data->data[$i][$j] = ModuleFields::getFieldValue($fields_popup[$col], $data->data[$i][$j]);
 				}
-				if($col == $this->view_col) {
+				if($col == $module->view_col) {
 					$data->data[$i][$j] = '<a href="'.url(config('laraadmin.adminRoute') . '/projects/'.$data->data[$i][0]).'">'.$data->data[$i][$j].'</a>';
 				}
 				// else if($col == "author") {

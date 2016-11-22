@@ -73,7 +73,7 @@
 						<div class="col-md-6">@la_input($module, 'assigned_to')</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6">@la_input($module, 'connect_since')</div>
+						<div class="col-md-6">@la_input($module, 'connected_since')</div>
 						<div class="col-md-6">@la_input($module, 'address')</div>
 					</div>
 					<div class="row">

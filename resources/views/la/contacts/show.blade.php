@@ -97,7 +97,7 @@
 		<li class=""><a href="{{ url(config('laraadmin.adminRoute') . '/contacts') }}" data-toggle="tooltip" data-placement="right" title="Back to Contacts"><i class="fa fa-chevron-left"></i></a></li>
 		<li class="active"><a role="tab" data-toggle="tab" class="active" href="#tab-general-info" data-target="#tab-info"><i class="fa fa-bars"></i> General Info</a></li>
 		<li class=""><a role="tab" data-toggle="tab" href="#tab-timeline" data-target="#tab-timeline"><i class="fa fa-clock-o"></i> Timeline</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-opportunities" data-target="#tab-opportunities"><i class="fa {{ Dwij\Laraadmin\Models\Module::get('Opportunities')->fa_icon }}"></i> Opportunities</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-opportunities" data-target="#tab-opportunities"><i class="fa {{ Module::get('Opportunities')->fa_icon }}"></i> Opportunities</a></li>
 	</ul>
 
 	<div class="tab-content">
@@ -256,16 +256,13 @@
 					<div class="panel-body p20">
 						<table id="dt-contact-opportunities" class="table table-bordered" style="width: 100%;">
 							<thead>
+							<?php
+							$listing_cols = Module::getListingColumns('Opportunities', true);
+							?>
 							<tr class="success">
-								<th>Id</th>
-								<th>Name</th>
-								<th>Organization</th>
-								<th>Sales stage</th>
-								<th>Lead Source</th>
-								<th>Expected close date</th>
-								<th>Amount</th>
-								<th>Assigned to</th>
-								<th>Contact</th>
+								@foreach( $listing_cols as $col )
+									<th>{{ $col['label'] }}</th>
+								@endforeach
 								<th>Actions</th>
 							</tr>
 							</thead>

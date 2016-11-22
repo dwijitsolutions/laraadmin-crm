@@ -18,55 +18,173 @@ class CreateOpportunitiesTable extends Migration
     public function up()
     {
         Module::generate("Opportunities", 'opportunities', 'name', 'fa-lightbulb-o', [
-            ["name", "Name", "Name", true, "", 0, 250, true],
-            ["organization", "Organization", "Dropdown", false, "", 0, 0, false, "@organizations"],
-            ["contact", "Contact", "Dropdown", false, "", 0, 0, false, "@contacts"],
-            ["amount", "Amount", "Integer", false, "0", 0, 11, false],
-            ["expected_close_date", "Expected close date", "Date", false, "", 0, 0, false],
-            ["next_step", "Next Step", "TextField", false, "", 0, 256, false],
-            ["assigned_to", "Assigned to", "Dropdown", false, "", 0, 0, false, "@employees"],
-            ["type", "Type", "Radio", false, "Existing Business", 0, 0, false, ["Existing Business","New Business"]],
-            ["lead_source", "Lead source", "Dropdown", false, "", 0, 0, false, ["Cold Call","Existing Customer","Self Generated","Employee","Partner","Public Relations","Direct Mail","Conference","Trade Show","Web Site","Word of mouth","Other"]],
-            ["sales_stage", "Sales stage", "Dropdown", false, "", 0, 0, false, ["Prospecting","Qualification","Needs Analysis","Value Proposition","Identify Decision Makers","Perception Analysis","Proposal or Price Quote","Negotiation or Review","Closed Won","Closed Lost"]],
-            ["probability", "Probability", "Integer", false, "0", 0, 100, false],
-            ["forecast_amount", "Forecast Amount", "Integer", false, "0", 0, 11, false],
-            ["description", "Description", "Textarea", false, "", 0, 0, false],
+            [
+                "colname" => "name",
+                "label" => "Name",
+                "field_type" => "Name",
+                "unique" => true,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 250,
+                "required" => true,
+                "listing_col" => true
+            ], [
+                "colname" => "organization",
+                "label" => "Organization",
+                "field_type" => "Dropdown",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 0,
+                "required" => false,
+                "listing_col" => true,
+                "popup_vals" => "@organizations",
+            ], [
+                "colname" => "contact",
+                "label" => "Contact",
+                "field_type" => "Dropdown",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 0,
+                "required" => false,
+                "listing_col" => true,
+                "popup_vals" => "@contacts",
+            ], [
+                "colname" => "amount",
+                "label" => "Amount",
+                "field_type" => "Integer",
+                "unique" => false,
+                "defaultvalue" => "0",
+                "minlength" => 0,
+                "maxlength" => 11,
+                "required" => false,
+                "listing_col" => true
+            ], [
+                "colname" => "expected_close_date",
+                "label" => "Expected close date",
+                "field_type" => "Date",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 0,
+                "required" => false,
+                "listing_col" => true
+            ], [
+                "colname" => "next_step",
+                "label" => "Next Step",
+                "field_type" => "TextField",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 256,
+                "required" => false,
+                "listing_col" => false
+            ], [
+                "colname" => "assigned_to",
+                "label" => "Assigned to",
+                "field_type" => "Dropdown",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 0,
+                "required" => false,
+                "listing_col" => true,
+                "popup_vals" => "@employees",
+            ], [
+                "colname" => "type",
+                "label" => "Type",
+                "field_type" => "Radio",
+                "unique" => false,
+                "defaultvalue" => "Existing Business",
+                "minlength" => 0,
+                "maxlength" => 0,
+                "required" => false,
+                "listing_col" => false,
+                "popup_vals" => ["Existing Business","New Business"],
+            ], [
+                "colname" => "lead_source",
+                "label" => "Lead source",
+                "field_type" => "Dropdown",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 0,
+                "required" => false,
+                "listing_col" => true,
+                "popup_vals" => ["Cold Call","Existing Customer","Self Generated","Employee","Partner","Public Relations","Direct Mail","Conference","Trade Show","Web Site","Word of mouth","Other"],
+            ], [
+                "colname" => "sales_stage",
+                "label" => "Sales stage",
+                "field_type" => "Dropdown",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 0,
+                "required" => false,
+                "listing_col" => true,
+                "popup_vals" => ["Prospecting","Qualification","Needs Analysis","Value Proposition","Identify Decision Makers","Perception Analysis","Proposal or Price Quote","Negotiation or Review","Closed Won","Closed Lost"],
+            ], [
+                "colname" => "probability",
+                "label" => "Probability",
+                "field_type" => "Integer",
+                "unique" => false,
+                "defaultvalue" => "0",
+                "minlength" => 0,
+                "maxlength" => 100,
+                "required" => false,
+                "listing_col" => false
+            ], [
+                "colname" => "forecast_amount",
+                "label" => "Forecast Amount",
+                "field_type" => "Integer",
+                "unique" => false,
+                "defaultvalue" => "0",
+                "minlength" => 0,
+                "maxlength" => 11,
+                "required" => false,
+                "listing_col" => false
+            ], [
+                "colname" => "description",
+                "label" => "Description",
+                "field_type" => "Textarea",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 0,
+                "required" => false,
+                "listing_col" => false
+            ]
         ]);
-		
-		/*
-		Row Format:
-		["field_name_db", "Label", "UI Type", "Unique", "Default_Value", "min_length", "max_length", "Required", "Pop_values"]
-        Module::generate("Module_Name", "Table_Name", "view_column_name" "Fields_Array");
         
-		Module::generate("Books", 'books', 'name', [
-            ["address",     "Address",      "Address",  false, "",          0,  1000,   true],
-            ["restricted",  "Restricted",   "Checkbox", false, false,       0,  0,      false],
-            ["price",       "Price",        "Currency", false, 0.0,         0,  0,      true],
-            ["date_release", "Date of Release", "Date", false, "NULL", 0, 0,   false],
-            ["time_started", "Start Time",  "Datetime", false, "now()", 0, 0, false],
-            ["weight",      "Weight",       "Decimal",  false, 0.0,         0,  20,     true],
-            ["publisher",   "Publisher",    "Dropdown", false, "Marvel",    0,  0,      false, ["Bloomsbury","Marvel","Universal"]],
-            ["publisher",   "Publisher",    "Dropdown", false, 3,           0,  0,      false, "@publishers"],
-            ["email",       "Email",        "Email",    false, "",          0,  0,      false],
-            ["file",        "File",         "File",     false, "",          0,  1,      false],
-            ["files",       "Files",        "Files",    false, "",          0,  10,     false],
-            ["weight",      "Weight",       "Float",    false, 0.0,         0,  20.00,  true],
-            ["biography",   "Biography",    "HTML",     false, "<p>This is description</p>", 0, 0, true],
-            ["profile_image", "Profile Image", "Image", false, "img_path.jpg", 0, 250,  false],
-            ["pages",       "Pages",        "Integer",  false, 0,           0,  5000,   false],
-            ["mobile",      "Mobile",       "Mobile",   false, "+91  8888888888", 0, 20,false],
-            ["media_type",  "Media Type",   "Multiselect", false, ["Audiobook"], 0, 0,  false, ["Print","Audiobook","E-book"]],
-            ["media_type",  "Media Type",   "Multiselect", false, [2,3],    0,  0,      false, "@media_types"],
-            ["name",        "Name",         "Name",     false, "John Doe",  5,  250,    true],
-            ["password",    "Password",     "Password", false, "",          6,  250,    true],
-            ["status",      "Status",       "Radio",    false, "Published", 0,  0,      false, ["Draft","Published","Unpublished"]],
-            ["author",      "Author",       "String",   false, "JRR Tolkien", 0, 250,   true],
-            ["genre",       "Genre",        "Taginput", false, ["Fantasy","Adventure"], 0, 0, false],
-            ["description", "Description",  "Textarea", false, "",          0,  1000,   false],
-            ["short_intro", "Introduction", "TextField",false, "",          5,  250,    true],
-            ["website",     "Website",      "URL",      false, "http://dwij.in", 0, 0,  false],
-        ]);
-		*/
+        /*
+        Module::generate("Module_Name", "Table_Name", "view_column_name" "Fields_Array");
+
+        Field Format:
+        [
+            "colname" => "name",
+            "label" => "Name",
+            "field_type" => "Name",
+            "unique" => false,
+            "defaultvalue" => "John Doe",
+            "minlength" => 5,
+            "maxlength" => 100,
+            "required" => true,
+            "listing_col" => true,
+            "popup_vals" => ["Employee", "Client"]
+        ]
+        # Format Details: Check http://laraadmin.com/docs/migrations_cruds#schema-ui-types
+        colname: Database column name. lowercase, words concatenated by underscore (_)
+        label: Label of Column e.g. Name, Cost, Is Public
+        field_type: It defines type of Column in more General way.
+        unique: Whether the column has unique values. Value in true / false
+        defaultvalue: Default value for column.
+        minlength: Minimum Length of value in integer.
+        maxlength: Maximum Length of value in integer.
+        required: Is this mandatory field in Add / Edit forms. Value in true / false
+        listing_col: Is allowed to show in index page datatable.
+        popup_vals: These are values for MultiSelect, TagInput and Radio Columns. Either connecting @tables or to list []
+        */
     }
 
     /**

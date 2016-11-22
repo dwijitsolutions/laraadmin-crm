@@ -18,58 +18,200 @@ class CreateLeadsTable extends Migration
     public function up()
     {
         Module::generate("Leads", 'leads', 'first_name', 'fa-check-square-o', [
-            ["first_name", "First Name", "Name", false, "", 1, 100, false],
-            ["last_name", "Last Name", "Name", false, "", 1, 100, true],
-            ["phone_primary", "Primary Phone", "Mobile", false, "", 10, 20, true],
-            ["phone_secondary", "Secondary Phone", "Mobile", false, "", 10, 20, false],
-            ["email_primary", "Primary Email", "Email", false, "", 0, 256, false],
-            ["email_secondary", "Secondary Email", "Email", false, "", 0, 256, false],
-            ["company", "Company", "String", false, "", 0, 256, false],
-            ["title", "Title", "String", false, "", 0, 256, false],
-            ["lead_source", "Lead Source", "Dropdown", false, "", 0, 0, false, ["Cold Call","Existing Customer","Self Generated","Employee","Partner","Public Relation","Direct Mail","Conference","Trade Show","Web Site","Word of mouth","Other"]],
-            ["industry", "Industry", "Dropdown", false, "", 0, 0, false, "@industry_types"],
-            ["assigned_to", "Assigned To", "Dropdown", false, "", 0, 0, false, "@employees"],
-            ["employee_count", "Number of Employees", "Integer", false, "1", 1, 11, false],
-            ["address", "Address", "Address", false, "", 0, 256, false],
-            ["city", "City", "String", false, "", 0, 256, false],
-            ["country", "Country", "String", false, "", 0, 256, false],
-            ["description", "Description", "Textarea", false, "", 0, 0, false],
+            [
+                "colname" => "first_name",
+                "label" => "First Name",
+                "field_type" => "Name",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 1,
+                "maxlength" => 100,
+                "required" => false,
+                "listing_col" => true
+            ], [
+                "colname" => "last_name",
+                "label" => "Last Name",
+                "field_type" => "Name",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 1,
+                "maxlength" => 100,
+                "required" => true,
+                "listing_col" => false
+            ], [
+                "colname" => "phone_primary",
+                "label" => "Primary Phone",
+                "field_type" => "Mobile",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 10,
+                "maxlength" => 20,
+                "required" => true,
+                "listing_col" => true
+            ], [
+                "colname" => "phone_secondary",
+                "label" => "Secondary Phone",
+                "field_type" => "Mobile",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 10,
+                "maxlength" => 20,
+                "required" => false,
+                "listing_col" => false
+            ], [
+                "colname" => "email_primary",
+                "label" => "Primary Email",
+                "field_type" => "Email",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 256,
+                "required" => false,
+                "listing_col" => true
+            ], [
+                "colname" => "email_secondary",
+                "label" => "Secondary Email",
+                "field_type" => "Email",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 256,
+                "required" => false,
+                "listing_col" => false
+            ], [
+                "colname" => "company",
+                "label" => "Company",
+                "field_type" => "String",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 256,
+                "required" => false,
+                "listing_col" => true
+            ], [
+                "colname" => "title",
+                "label" => "Title",
+                "field_type" => "String",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 256,
+                "required" => false,
+                "listing_col" => false
+            ], [
+                "colname" => "lead_source",
+                "label" => "Lead Source",
+                "field_type" => "Dropdown",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 0,
+                "required" => false,
+                "listing_col" => true,
+                "popup_vals" => ["Cold Call","Existing Customer","Self Generated","Employee","Partner","Public Relation","Direct Mail","Conference","Trade Show","Web Site","Word of mouth","Other"],
+            ], [
+                "colname" => "industry",
+                "label" => "Industry",
+                "field_type" => "Dropdown",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 0,
+                "required" => false,
+                "listing_col" => true,
+                "popup_vals" => "@industry_types",
+            ], [
+                "colname" => "assigned_to",
+                "label" => "Assigned To",
+                "field_type" => "Dropdown",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 0,
+                "required" => false,
+                "listing_col" => true,
+                "popup_vals" => "@employees",
+            ], [
+                "colname" => "employee_count",
+                "label" => "Number of Employees",
+                "field_type" => "Integer",
+                "unique" => false,
+                "defaultvalue" => "1",
+                "minlength" => 1,
+                "maxlength" => 11,
+                "required" => false,
+                "listing_col" => false
+            ], [
+                "colname" => "address",
+                "label" => "Address",
+                "field_type" => "Address",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 256,
+                "required" => false,
+                "listing_col" => false
+            ], [
+                "colname" => "city",
+                "label" => "City",
+                "field_type" => "Address",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 1,
+                "maxlength" => 50,
+                "required" => false,
+                "listing_col" => false
+            ], [
+                "colname" => "country",
+                "label" => "Country",
+                "field_type" => "Address",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 1,
+                "maxlength" => 50,
+                "required" => false,
+                "listing_col" => false
+            ], [
+                "colname" => "description",
+                "label" => "Description",
+                "field_type" => "Textarea",
+                "unique" => false,
+                "defaultvalue" => "",
+                "minlength" => 0,
+                "maxlength" => 0,
+                "required" => false,
+                "listing_col" => false
+            ]
         ]);
-		
-		/*
-		Row Format:
-		["field_name_db", "Label", "UI Type", "Unique", "Default_Value", "min_length", "max_length", "Required", "Pop_values"]
-        Module::generate("Module_Name", "Table_Name", "view_column_name" "Fields_Array");
         
-		Module::generate("Books", 'books', 'name', [
-            ["address",     "Address",      "Address",  false, "",          0,  1000,   true],
-            ["restricted",  "Restricted",   "Checkbox", false, false,       0,  0,      false],
-            ["price",       "Price",        "Currency", false, 0.0,         0,  0,      true],
-            ["date_release", "Date of Release", "Date", false, "NULL", 0, 0,   false],
-            ["time_started", "Start Time",  "Datetime", false, "now()", 0, 0, false],
-            ["weight",      "Weight",       "Decimal",  false, 0.0,         0,  20,     true],
-            ["publisher",   "Publisher",    "Dropdown", false, "Marvel",    0,  0,      false, ["Bloomsbury","Marvel","Universal"]],
-            ["publisher",   "Publisher",    "Dropdown", false, 3,           0,  0,      false, "@publishers"],
-            ["email",       "Email",        "Email",    false, "",          0,  0,      false],
-            ["file",        "File",         "File",     false, "",          0,  1,      false],
-            ["files",       "Files",        "Files",    false, "",          0,  10,     false],
-            ["weight",      "Weight",       "Float",    false, 0.0,         0,  20.00,  true],
-            ["biography",   "Biography",    "HTML",     false, "<p>This is description</p>", 0, 0, true],
-            ["profile_image", "Profile Image", "Image", false, "img_path.jpg", 0, 250,  false],
-            ["pages",       "Pages",        "Integer",  false, 0,           0,  5000,   false],
-            ["mobile",      "Mobile",       "Mobile",   false, "+91  8888888888", 0, 20,false],
-            ["media_type",  "Media Type",   "Multiselect", false, ["Audiobook"], 0, 0,  false, ["Print","Audiobook","E-book"]],
-            ["media_type",  "Media Type",   "Multiselect", false, [2,3],    0,  0,      false, "@media_types"],
-            ["name",        "Name",         "Name",     false, "John Doe",  5,  250,    true],
-            ["password",    "Password",     "Password", false, "",          6,  250,    true],
-            ["status",      "Status",       "Radio",    false, "Published", 0,  0,      false, ["Draft","Published","Unpublished"]],
-            ["author",      "Author",       "String",   false, "JRR Tolkien", 0, 250,   true],
-            ["genre",       "Genre",        "Taginput", false, ["Fantasy","Adventure"], 0, 0, false],
-            ["description", "Description",  "Textarea", false, "",          0,  1000,   false],
-            ["short_intro", "Introduction", "TextField",false, "",          5,  250,    true],
-            ["website",     "Website",      "URL",      false, "http://dwij.in", 0, 0,  false],
-        ]);
-		*/
+        /*
+        Module::generate("Module_Name", "Table_Name", "view_column_name" "Fields_Array");
+
+        Field Format:
+        [
+            "colname" => "name",
+            "label" => "Name",
+            "field_type" => "Name",
+            "unique" => false,
+            "defaultvalue" => "John Doe",
+            "minlength" => 5,
+            "maxlength" => 100,
+            "required" => true,
+            "listing_col" => true,
+            "popup_vals" => ["Employee", "Client"]
+        ]
+        # Format Details: Check http://laraadmin.com/docs/migrations_cruds#schema-ui-types
+        colname: Database column name. lowercase, words concatenated by underscore (_)
+        label: Label of Column e.g. Name, Cost, Is Public
+        field_type: It defines type of Column in more General way.
+        unique: Whether the column has unique values. Value in true / false
+        defaultvalue: Default value for column.
+        minlength: Minimum Length of value in integer.
+        maxlength: Maximum Length of value in integer.
+        required: Is this mandatory field in Add / Edit forms. Value in true / false
+        listing_col: Is allowed to show in index page datatable.
+        popup_vals: These are values for MultiSelect, TagInput and Radio Columns. Either connecting @tables or to list []
+        */
     }
 
     /**

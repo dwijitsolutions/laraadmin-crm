@@ -96,10 +96,10 @@
 	<ul data-toggle="ajax-tab" class="nav nav-tabs profile" role="tablist">
 		<li class=""><a href="{{ url(config('laraadmin.adminRoute') . '/organizations') }}" data-toggle="tooltip" data-placement="right" title="Back to Organizations"><i class="fa fa-chevron-left"></i></a></li>
 		<li class="active"><a role="tab" data-toggle="tab" class="active" href="#tab-general-info" data-target="#tab-info"><i class="fa fa-bars"></i> General Info</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-contacts" data-target="#tab-contacts"><i class="fa {{ Dwij\Laraadmin\Models\Module::get('Contacts')->fa_icon }}"></i> Contacts</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-opportunities" data-target="#tab-opportunities"><i class="fa {{ Dwij\Laraadmin\Models\Module::get('Opportunities')->fa_icon }}"></i> Opportunities</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-projects" data-target="#tab-projects"><i class="fa {{ Dwij\Laraadmin\Models\Module::get('Projects')->fa_icon }}"></i> Projects</a></li>
-		<li class=""><a role="tab" data-toggle="tab" href="#tab-tickets" data-target="#tab-tickets"><i class="fa {{ Dwij\Laraadmin\Models\Module::get('Tickets')->fa_icon }}"></i> Tickets</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-contacts" data-target="#tab-contacts"><i class="fa {{ Module::get('Contacts')->fa_icon }}"></i> Contacts</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-opportunities" data-target="#tab-opportunities"><i class="fa {{ Module::get('Opportunities')->fa_icon }}"></i> Opportunities</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-projects" data-target="#tab-projects"><i class="fa {{ Module::get('Projects')->fa_icon }}"></i> Projects</a></li>
+		<li class=""><a role="tab" data-toggle="tab" href="#tab-tickets" data-target="#tab-tickets"><i class="fa {{ Module::get('Tickets')->fa_icon }}"></i> Tickets</a></li>
 		<li class=""><a role="tab" data-toggle="tab" href="#tab-timeline" data-target="#tab-timeline"><i class="fa fa-clock-o"></i> Timeline</a></li>
 	</ul>
 
@@ -128,7 +128,7 @@
 						<div class="col-md-6">@la_display($module, 'assigned_to')</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6">@la_display($module, 'connect_since')</div>
+						<div class="col-md-6">@la_display($module, 'connected_since')</div>
 						<div class="col-md-6">@la_display($module, 'address')</div>
 					</div>
 					<div class="row">
@@ -246,22 +246,20 @@
 			<div class="tab-content">
 				<div class="panel">
 					<div class="panel-default panel-heading">
-						<h4>Contact assigned to {{ $organization->name }}</h4>
+						<h4>Contacts assigned to {{ $organization->name }}</h4>
 					</div>
 					<div class="panel-body p20">
 						<table id="dt-organization-contacts" class="table table-bordered" style="width:100%;">
 							<thead>
-							<tr class="success">
-								<th>Id</th>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th>Title</th>
-								<th>Organization Name</th>
-								<th>Primary Email</th>
-								<th>Primary Phone</th>
-								<th>Assigned To</th>
-								<th>Actions</th>
-							</tr>
+								<?php
+								$listing_cols = Module::getListingColumns('Contacts', true);
+								?>
+								<tr class="success">
+									@foreach( $listing_cols as $col )
+										<th>{{ $col['label'] }}</th>
+									@endforeach
+									<th>Actions</th>
+								</tr>
 							</thead>
 							<tbody>
 								
@@ -276,23 +274,20 @@
 			<div class="tab-content">
 				<div class="panel">
 					<div class="panel-default panel-heading">
-						<h4>Opportunitie assigned to {{ $organization->name }}</h4>
+						<h4>Opportunities assigned to {{ $organization->name }}</h4>
 					</div>
 					<div class="panel-body p20">
 						<table id="dt-organization-opportunities" class="table table-bordered" style="width:100%;">
 							<thead>
-							<tr class="success">
-								<th>Id</th>
-								<th>Name</th>
-								<th>Organization</th>
-								<th>Sales stage</th>
-								<th>Lead Source</th>
-								<th>Expected close date</th>
-								<th>Amount</th>
-								<th>Assigned to</th>
-								<th>Contact</th>
-								<th>Actions</th>
-							</tr>
+								<?php
+								$listing_cols = Module::getListingColumns('Opportunities', true);
+								?>
+								<tr class="success">
+									@foreach( $listing_cols as $col )
+										<th>{{ $col['label'] }}</th>
+									@endforeach
+									<th>Actions</th>
+								</tr>
 							</thead>
 							<tbody>
 								
@@ -307,22 +302,20 @@
 			<div class="tab-content">
 				<div class="panel">
 					<div class="panel-default panel-heading">
-						<h4>Project assigned to {{ $organization->name }}</h4>
+						<h4>Projects assigned to {{ $organization->name }}</h4>
 					</div>
 					<div class="panel-body p20">
 						<table id="dt-organization-projects" class="table table-bordered" style="width:100%;">
 							<thead>
-							<tr class="success">
-								<th>Id</th>
-								<th>Project Name</th>
-								<th>Start Date</th>
-								<th>Target End Date</th>
-								<th>Actual End Date</th>
-								<th>Target Budget</th>
-								<th>Status</th>
-								<th>Assigned To</th>
-								<th>Actions</th>
-							</tr>
+								<?php
+								$listing_cols = Module::getListingColumns('Projects', true);
+								?>
+								<tr class="success">
+									@foreach( $listing_cols as $col )
+										<th>{{ $col['label'] }}</th>
+									@endforeach
+									<th>Actions</th>
+								</tr>
 							</thead>
 							<tbody>
 								
@@ -337,22 +330,20 @@
 			<div class="tab-content">
 				<div class="panel">
 					<div class="panel-default panel-heading">
-						<h4>Ticket assigned to {{ $organization->name }}</h4>
+						<h4>Tickets assigned to {{ $organization->name }}</h4>
 					</div>
 					<div class="panel-body p20">
 						<table id="dt-organization-tickets" class="table table-bordered" style="width:100%;">
 							<thead>
-							<tr class="success">
-								<th>Id</th>
-								<th>Title</th>
-								<th>Project</th>
-								<th>Organization</th>
-								<th>Status</th>
-								<th>Priority</th>
-								<th>Assigned to</th>
-								<th>Contact</th>
-								<th>Actions</th>
-							</tr>
+								<?php
+								$listing_cols = Module::getListingColumns('Tickets', true);
+								?>
+								<tr class="success">
+									@foreach( $listing_cols as $col )
+										<th>{{ $col['label'] }}</th>
+									@endforeach
+									<th>Actions</th>
+								</tr>
 							</thead>
 							<tbody>
 								
