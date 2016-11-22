@@ -298,6 +298,11 @@ use Dwij\Laraadmin\Models\Module;
 						<div class="Switch Round Off" style="vertical-align:top;margin-left:10px;"><div class="Toggle"></div></div>
 					</div>
 					
+					<div class="form-group">
+						<label for="listing_col">Show in Index Listing:</label>
+						{{ Form::checkbox("listing_col", "listing_col", false, []) }}
+						<div class="Switch Round Off" style="vertical-align:top;margin-left:10px;"><div class="Toggle"></div></div>
+					</div>
 					<!--
 					<div class="form-group">
 						<label for="popup_vals">Values :</label>
