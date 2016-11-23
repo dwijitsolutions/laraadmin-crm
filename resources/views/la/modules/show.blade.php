@@ -117,7 +117,14 @@ use Dwij\Laraadmin\Models\Module;
 									<td>{{ $field['minlength'] }}</td>
 									<td>{{ $field['maxlength'] }}</td>
 									<td>@if($field['required']) <span class="text-danger">True</span>@endif </td>
-									<td>@if($field['listing_col']) <span class="text-danger">True</span>@endif </td>
+									<td>
+										<form id="listing_view_cal" action="{{ url(config('laraadmin.adminRoute') . '/module_field_listing_show') }}">
+											<input name="ref_{!! $field['id'] !!}" type="checkbox" @if($field['listing_col'] == 1) checked="checked" @endif>
+											<div class="Switch Ajax Round @if($field['listing_col'] == 1) On @else Off @endif" listid="{{ $field['id'] }}">
+												<div class="Toggle"></div>
+											</div>
+										</form>
+									</td>
 									<td style="max-width:300px;"><?php echo LAHelper::parseValues($field['popup_vals']) ?></td>
 									<td style="min-width:60px;">
 										<a href="{{ url(config('laraadmin.adminRoute') . '/module_fields/'.$field['id'].'/edit') }}" class="btn btn-edit-field btn-warning btn-xs" style="display:inline;padding:2px 5px 3px 5px;" id="edit_{{ $field['colname'] }}"><i class="fa fa-edit"></i></a>
@@ -690,6 +697,27 @@ $(function () {
 			$icon.removeClass('fa-chevron-up');
 			$icon.addClass('fa-chevron-down');
 		}
+	});
+
+	$('.Switch.Ajax').click(function() {
+		var state = "false";
+		if ($(this).hasClass('On')) {
+			state = "false";
+		} else {
+			state = "true";
+		}
+		$.ajax({
+			type: "POST",
+			url : "{{ url(config('laraadmin.adminRoute') . '/module_field_listing_show') }}",
+			data : {
+				_token: '{{ csrf_token() }}',
+				listid: $(this).attr("listid"),
+				state: state,
+			},
+			success : function(data){
+				console.log(data);
+			}
+		});
 	});
 });
 </script>
